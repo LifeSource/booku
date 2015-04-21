@@ -2,7 +2,7 @@
   "name": "booku",
   "version": "1.0.0",
   "description": "A simple book shop appliction",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +16,13 @@
     "mongoose": "^4.0.1",
     "morgan": "^1.5.2",
     "stylus": "^0.50.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "gulp-jshint": "^1.10.0",
+    "gulp-nodemon": "^2.0.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-watch": "^4.2.4"
   }
 }
