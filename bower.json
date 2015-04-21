@@ -1,0 +1,20 @@
+{
+  "name": "booku",
+  "version": "1.0.0",
+  "authors": [
+    "Kenrick Wu <kenrick.wu@gmail.com>"
+  ],
+  "description": "a simple book shop application",
+  "keywords": [
+    "book"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ]
+}
