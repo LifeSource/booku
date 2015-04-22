@@ -1,11 +1,17 @@
 var gulp = require("gulp"),
-    watch = require("gulp-watch"),
-    jshint = require("gulp-jshint"),
-    concat = require("gulp-concat"),
-    uglify = require("gulp-uglify"),
-    nodemon = require("gulp-nodemon");
+    args = require("yargs").argv;
+var $ = require("gulp-load-plugins")({ lazy: true});
 
-var config = require("./gulp.config");
+var config = require("./gulp.config")();
+
+gulp.task("vet", function  () {
+	return	gulp.src(config.allJs)
+	//	.pipe(jscs())
+		.pipe($.if(args.verbose, $.print()))
+		.pipe($.jshint())
+		.pipe($.jshint.reporter("jshint-stylish", { verbose: true }))
+		.pipe($.jshint.reporter("fail"));
+});
 
 gulp.task("default", function() {
 
