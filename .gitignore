@@ -1,4 +1,5 @@
 *.[oa]
-~.swp
+*.swp
+*~
 node_modules/
 public/lib/

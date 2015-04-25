@@ -1,0 +1,26 @@
+doctype html
+html
+	head
+		title= Booku 
+		include header.jade
+	body
+		header.container
+			div#menu.navbar.navbar-inverse.navbar-fixed-top
+				div.navbar-header
+					button(data-toggle="collapse" data-target=".navbar-collapse").btn.btn-success.navbar-toggle
+						span.glyphicon.glyphicon-chevron-down
+					div#logo
+						a(href=".")
+							h4 Booku
+				div.navbar-collapse.collapse
+					ul.nav.navbar-nav.navbar-right
+						li.nav.active
+							a(href=".") Home
+						li.nav
+							a(href="/about.html") About
+						li.nav
+							a(href="/contact.html") Contact
+		block content
+		hr
+		include scripts.jade
+		include footer.jade

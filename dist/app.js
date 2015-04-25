@@ -1,0 +1,1 @@
+var foo=function(){y=2};

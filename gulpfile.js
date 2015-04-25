@@ -1,23 +1,39 @@
 var gulp = require("gulp"),
-    args = require("yargs").argv;
-var $ = require("gulp-load-plugins")({ lazy: true});
+	browserSync = require("browser-sync"),
+	reload = browserSync.reload;
 
+var $ = require("gulp-load-plugins")({ lazy: true });
 var config = require("./gulp.config")();
 
-gulp.task("vet", function  () {
-	return	gulp.src(config.allJs)
-	//	.pipe(jscs())
-		.pipe($.if(args.verbose, $.print()))
-		.pipe($.jshint())
-		.pipe($.jshint.reporter("jshint-stylish", { verbose: true }))
-		.pipe($.jshint.reporter("fail"));
+// Javascript minification
+gulp.task("minify", function () {
+	return gulp.src(config.clientApp + "**/*.js")
+			.pipe($.uglify())
+			.pipe(gulp.dest("./dist"));
 });
 
-gulp.task("default", function() {
+// CSS pre-processing
+gulp.task("styles", function () {
+	return gulp.src(config.styles + "**/*.styl")
+			.pipe($.stylus())
+			.pipe(gulp.dest(config.styles));
+});
 
-	nodemon({
-		file: "server.js",
-		ext: "js jade styl html css",
-		ignore: [config.jsVendor]
+gulp.task("watch", function () {
+	gulp.watch(config.styles + "**/*.styl", ["styles"]);
+	gulp.watch(config.clientApp + "**/*.js", ["minify"]);
+});
+
+// nodemon
+gulp.task("dev", function () {
+	return $.nodemon({
+		script: config.server + "server.js",
+		ext: config.extensions,
+		env: { "NODE_ENV" : "development" },
+		ignore: config.ignores
+	})
+	.on("restart", function () {
 	});
 });
+
+gulp.task("default", ["minify","watch", "dev"]);
