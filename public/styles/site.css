@@ -2,14 +2,28 @@ body {
   margin-top: 70px;
 }
 #logo {
-  margin-left: 40px;
+  margin-left: 15px;
 }
-h2 {
-  color: #ffa500;
+.dashboard-tiles {
+  list-style: none;
 }
-h3 {
-  color: #00f;
+.dashboard-tiles li {
+  padding: 10px;
 }
-h4 {
-  color: #ffa500;
+.tile {
+  width: 150px;
+  height: 120px;
+  margin: 0 20px 20px 0;
+}
+.title-author {
+  background-color: #ffa200;
+}
+.tile-book {
+  background-color: #0cff00;
+}
+.glyphicon.glyphicon-book {
+  font-size: 51px;
+}
+.glyphicon.glyphicon-education {
+  font-size: 51px;
 }

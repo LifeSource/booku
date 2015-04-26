@@ -1,6 +1,6 @@
 var gulp = require("gulp"),
 	browserSync = require("browser-sync"),
-	reload = browserSync.reload;
+	args = require("yargs").argv;
 
 var $ = require("gulp-load-plugins")({ lazy: true });
 var config = require("./gulp.config")();
@@ -23,7 +23,7 @@ gulp.task("styles", function () {
 
 gulp.task("watch", function () {
 	gulp.watch(config.styles + "**/*.styl", ["styles"]);
-	gulp.watch(config.server + "views/**/*.jade", reload);
+	gulp.watch(config.server + "views/**/*.jade", browserSync.reload);
 	gulp.watch(config.clientApp + "**/*.js", ["minify"]);
 });
 
@@ -38,6 +38,10 @@ gulp.task("dev", function () {
 	.on("restart", function (ev) {
 		log("*** nodemon restarted");
 		log("files changed on restart:\n" + ev);
+		setTimeout(function () {
+			browserSync.notify("reloading now ...");
+			browserSync.reload({ stream: false });
+		}, config.browserReloadDelay);
 	})
 	.on("start", function () {
 		log("*** nodemon started.");
@@ -75,7 +79,7 @@ function changeEvent(event) {
 }
 
 function startBrowserSync() {
-	if (browserSync.active) {
+	if (args.nosync || browserSync.active) {
 		return;
 	}
 	
@@ -105,7 +109,7 @@ function startBrowserSync() {
 		logLevel: "debug",
 		logPrefix: "gulp-patterns",
 		notify: true,
-		reloadDelay: 0 
+		reloadDelay: 1000 
 	};
 
 	browserSync(options);

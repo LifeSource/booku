@@ -13,7 +13,8 @@ module.exports = function () {
 		clientApp: clientApp,
 		ignores: vendor,
 		extensions: "js jade styl",
-		styles: styles 
+		styles: styles,
+		bowserReloadDelay: 1000
 	};
 
 	return config;
