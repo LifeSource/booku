@@ -1,4 +1,11 @@
-var foo = function() {
-    y = 2;
-    var x = 1;
-};
+(function () {
+	var app = angular.module("booku", ["ngResource", "ngRoute"]);
+
+	app.config(function ($routeProvider) {
+		$routeProvider
+			.when("/", {
+				templateUrl: "/partials/main"
+			})
+			.otherwise({ redirectTo: "/" });
+	});
+}());
