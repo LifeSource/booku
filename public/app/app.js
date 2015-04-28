@@ -4,7 +4,8 @@
 	app.config(function ($routeProvider) {
 		$routeProvider
 			.when("/", {
-				templateUrl: "/partials/main"
+				templateUrl: "/partials/main/home.jade",
+				controller: "HomeController"
 			})
 			.otherwise({ redirectTo: "/" });
 	});

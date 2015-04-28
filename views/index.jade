@@ -1,29 +1,26 @@
 extends includes/layout.jade
 block content
-	.container
-		.row
+	div(data-ng-controller="HomeController").container
+		.row.dashboard
 			.col-md-12
 				ul.dashboard-tiles
 					li.tile.title-author.col-md-4
 						div.pull-left
 							i.glyphicon.glyphicon-education
 						div.pull-right
-							a(href="http://www.google.com")
+							a(href=".")
 								span.bold Authors
 						div.clearfix
 					li.tile.tile-book.col-md-4
 						div.pull-left
 							i.glyphicon.glyphicon-book
 						div.pull-right
-							a(href="http://www.google.com")
+							a(href=".")
 								span.bold Books
+								h2 {{ books.count }}
 						div.clearfix
 		.row
 			.col-md-12
-				.panel.panel-primary
-					div.panel-heading
-						h3.panel-title Books
-					div.panel-body
-						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.:w
+				div(ng-view)
 
 

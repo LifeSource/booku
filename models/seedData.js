@@ -5,7 +5,7 @@
     seedData.books = [
 		{
             title: "NodeJS in Action",
-            author: "Mike Cantelon",
+            author: "Mike Cantelon, Marc Harter, TJ. Holowaychuk, Nathan Rajlich",
             genre: "Computing",
             price: 35.0
         }, {
@@ -24,7 +24,6 @@
             genre: "Computing",
             price: 55.0
         }
-
     ];
 
 }(module.exports));
