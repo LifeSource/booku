@@ -8,13 +8,14 @@ module.exports = function (app, config) {
 
 	// chose to use the jade templating engine
 	app.set("view engine", "jade");
-	app.set("views", path.join(config.rootPath, "booku/views"));
+	app.set("views", path.resolve(config.rootPath, "booku/views"));
 
 	// middlewares
 	app.use(cookieParser());
-	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: true }));
+	app.use(bodyParser.json());
 
-	// Where to find the client side files, (img, css, js)
-	app.use(express.static(path.join(config.rootPath, "booku/public")));
+	// static files
+	app.use(express.static(path.resolve(config.rootPath, "booku/public")));
+	app.use(express.static("./"));
 };

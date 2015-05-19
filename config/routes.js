@@ -4,21 +4,10 @@ var express = require("express"),
 module.exports = function(app) {
 
 	var Book = require("../models/book");
-	var bookRouter = express.Router();
+	var bookRouter = require("../routes/bookRoutes")(Book);
 
-	bookRouter.route("/Books")
-		.get(function (req, res) {
-			Book.find({}).exec(function (err, books) {
-				if (err) {
-					console.log(err);
-				} else {
-					res.json(books);
-				}
-			});
-		});
-
-	// API
-	app.use("/api", bookRouter);
+	// API routes
+	app.use("/api/books", bookRouter);
 
 	// render the angular partials
 	app.get("/partials/*", function (req, res) {

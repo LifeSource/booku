@@ -1,1 +1,1 @@
-!function(){var e=angular.module("booku",["ngResource","ngRoute"]);e.config(function(e){e.when("/",{templateUrl:"/partials/main/home.jade",controller:"HomeController"}).otherwise({redirectTo:"/"})})}();
+!function(){var e=angular.module("booku",["ngResource","ngRoute"]);e.config(function(e){e.when("/home",{templateUrl:"/partials/main/home.jade",controller:"HomeController"}).when("/book/add",{templateUrl:"/partials/book/add.jade"}).otherwise({redirectTo:"/home"})})}();

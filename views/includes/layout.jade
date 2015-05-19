@@ -1,44 +1,53 @@
+-var year = new Date().getFullYear();
 doctype html
 html
 	head
 		title= Booku 
-		include header.jade
-	body(ng-app="booku")
+		// bower:css
+		// endbower
+		// inject:css
+		// endinject
+	body(data-ng-app="booku")
 		header.container
 			div#menu.navbar.navbar-inverse.navbar-fixed-top
 				div.navbar-header
 					div#logo
 						button(data-toggle="collapse" data-target=".navbar-collapse").btn.btn-success.navbar-toggle
 							span.glyphicon.glyphicon-list
-						a(href=".")
+						a(href="#/")
 							h3 Booku
-				div.navbar-collapse.collapse
+				div#logoIcons.navbar-collapse.collapse
 					ul.nav.navbar-nav.navbar-right
 						li.nav 
 							a Kenrick Wu
 						li.nav
-							a(href="http://www.gulpjs.com")
+							a(href="http://www.gulpjs.com" target="_blank")
 								img(src="/images/gulp-tiny.png")
 						li.nav
 							a(href="http://www.angularjs.org" target="_blank")
 								img(src="/images/mongodb.png" target="blank")
 						li.nav
-							a(href="http://www.expressjs.com")
+							a(href="http://www.expressjs.com" target="_blank")
 								img(src="/images/expressjs.png")
 						li.nav
 							a(href="http://www.angularjs.org" target="_blank")
 								img(src="/images/angularjs-small.png" target="blank")
 						li.nav
-							a(href="http://www.nodejs.org")
+							a(href="http://www.nodejs.org" target="_blank")
 								img(src="/images/nodejs.png")
-		section#sideBar.col-md-2.inverse
-			ul#navList
+		section#navList.col-md-2.inverse
+			ul
 				li 
 					span.glyphicon.glyphicon-home 
-					a(href=".")  Home
+					a(href="#/")  Home
 				li 
 					span.glyphicon.glyphicon-pencil
-					a(href=".")  Authors
+					a(href="#/author")  Authors
 		section#main.col-md-10
 			block content
-		include scripts.jade
+			// bower:js
+			// endbower
+			// inject:js
+			// endinject
+		footer
+			p.text-center Kenrick Wu &copy; #{year}

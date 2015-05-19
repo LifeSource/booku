@@ -1,0 +1,1 @@
+!function(o){"use strict";var r=function(o,r,t){};o.controller("BookController",["$scope","$http","bookService",r])}(angular.module("booku"));

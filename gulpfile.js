@@ -1,39 +1,98 @@
 var gulp = require("gulp"),
-	browserSync = require("browser-sync"),
-	args = require("yargs").argv;
+	del = require("del"),
+	args = require("yargs").argv,
+	wiredep = require("wiredep"),
+	runSequence = require("run-sequence"),
+	browserSync = require("browser-sync");
 
 var $ = require("gulp-load-plugins")({ lazy: true });
 var config = require("./gulp.config")();
-
 var port = process.env.PORT || 3000;
 
-// Javascript minification
-gulp.task("minify", function () {
-	return gulp.src(config.clientApp + "**/*.js")
-			.pipe($.uglify())
-			.pipe(gulp.dest("./dist"));
+gulp.task("default", ["build"]);
+gulp.task("help", $.taskListing);
+
+gulp.task("build", function (done) {
+	runSequence("lint",
+		"jade", "dev", done);
 });
 
-// CSS pre-processing
-gulp.task("styles", function () {
-	return gulp.src(config.styles + "**/*.styl")
-			.pipe($.stylus())
-			.pipe(gulp.dest(config.styles));
+// Linting
+gulp.task("lint", function () {
+	log("*** Linting scripts for errors");
+	return gulp.src(config.alljs)
+		.pipe($.jshint())
+		.pipe($.jshint.reporter("jshint-stylish", {verbose: true}))
+		.pipe($.jshint.reporter("fail"));
 });
 
-gulp.task("watch", function () {
-	gulp.watch(config.styles + "**/*.styl", ["styles"]);
-	gulp.watch(config.server + "views/**/*.jade", browserSync.reload);
-	gulp.watch(config.clientApp + "**/*.js", ["minify"]);
+// Stylesheets
+gulp.task("styles", ["clean-styles"], function () {
+	log("*** Compiling Stylus --> CSS");
+	return gulp.src(config.stylus)
+		.pipe($.plumber())
+		.pipe($.stylus())
+		.pipe(gulp.dest(config.css));
+});
+
+gulp.task("watch-styles", function () {
+	gulp.watch(config.stylus, ["styles"]);
+});
+
+gulp.task("clean-styles", function (done) {
+	log("*** Cleaning out the css");
+	clean(config.css + "**/*.*", done);
+});
+
+// Jade templates
+gulp.task("jade", ["clean-jade"], function () {
+	log("*** Compiling Jade --> HTML");
+	return gulp.src(config.jade)
+		.pipe($.plumber())
+		.pipe($.jade({ 
+			pretty: true 
+		}))
+		.pipe(gulp.dest(config.client));
+});
+
+gulp.task("clean-jade", function (done) {
+	log("*** Cleaning out the html files");
+	clean(config.client + "**/*.html", done);
+});
+
+// Wiring up dependencies
+gulp.task("wiredep", ["jade"], function () {
+	log("*** Wire up bower css js and custom js");
+
+	var wiredep = require("wiredep").stream;
+	var options = config.getWiredepDefaultOptions();
+
+	return gulp.src(config.index)
+		.pipe(wiredep(options))
+		.pipe($.inject(gulp.src(config.js)))
+		.pipe(gulp.dest(config.client));
+});
+
+gulp.task("inject", ["wiredep", "styles"], function () {
+	return gulp.src(config.index)
+		.pipe($.inject(gulp.src(config.siteCss)))
+		.pipe(gulp.dest(config.client));
 });
 
 // nodemon
-gulp.task("dev", function () {
+gulp.task("dev", ["inject"], function () {
+
+	var isDev = true;
+
 	return $.nodemon({
 		script: config.server + "server.js",
 		ext: config.extensions,
-		env: { "NODE_ENV" : "development" },
-		ignore: config.ignores
+		env: { 
+			"PORT": config.port,
+			"NODE_ENV" : isDev ? "development" : "production" 
+		},
+		watch: [config.server],
+		ignore: config.ignore
 	})
 	.on("restart", function (ev) {
 		log("*** nodemon restarted");
@@ -55,11 +114,13 @@ gulp.task("dev", function () {
 	});
 });
 
-gulp.task("default", ["minify","watch", "dev"]);
-
 // --------------------------------------------------------
 // Utility Functions
 // --------------------------------------------------------
+
+function clean(path, done) {
+	del(path, done);	
+}
 
 function log(msg) {
 	if (typeof(msg) === 'object') {
@@ -95,8 +156,10 @@ function startBrowserSync() {
 		port: 8000,
 		files: [
 			config.client + "**/*.*", 
-			"!" + config.styles + "site.styl",
-			config.styles + "**/*.css"
+			config.client + "**/*.jade",
+			config.views + "**/*.*",
+			"!" + config.stylus,
+			config.css + "**/*.css"
 		],
 		ghostMode: {
 			clicks: true,

@@ -8,7 +8,6 @@
 
 		var onComplete = function (response) {
 			$scope.books = response;
-			//$scope.books = response.data;
 		};
 
 		var onError = function (reason) {
@@ -16,6 +15,8 @@
 		};
 
 		bookService.getBooks().then(onComplete, onError);
+
+
 	};
 
 	app.controller("HomeController", ["$scope", "bookService", HomeController]);

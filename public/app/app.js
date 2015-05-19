@@ -1,12 +1,18 @@
 (function () {
+	"use strict";
+
 	var app = angular.module("booku", ["ngResource", "ngRoute"]);
 
 	app.config(function ($routeProvider) {
 		$routeProvider
-			.when("/", {
+			.when("/home", {
 				templateUrl: "/partials/main/home.jade",
 				controller: "HomeController"
 			})
-			.otherwise({ redirectTo: "/" });
+			.when("/book/add", {
+				templateUrl: "/partials/book/add.jade",
+				//controller: "BookController"
+			})
+			.otherwise({ redirectTo: "/home" });
 	});
 }());

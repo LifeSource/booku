@@ -1,26 +1,3 @@
 extends includes/layout.jade
 block content
-	div(data-ng-controller="HomeController").container
-		.row.dashboard
-			.col-md-12
-				ul.dashboard-tiles
-					li.tile.title-author.col-md-4
-						div.pull-left
-							i.glyphicon.glyphicon-education
-						div.pull-right
-							a(href=".")
-								span.bold Authors
-						div.clearfix
-					li.tile.tile-book.col-md-4
-						div.pull-left
-							i.glyphicon.glyphicon-book
-						div.pull-right
-							a(href=".")
-								span.bold Books
-								h2 {{ books.count }}
-						div.clearfix
-		.row
-			.col-md-12
-				div(ng-view)
-
-
+	div(ng-view)
