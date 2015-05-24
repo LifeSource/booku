@@ -4,22 +4,25 @@
     <title></title>
     <!-- bower:css-->
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="lib/toastr/toastr.css" />
     <!-- endbower-->
     <!-- inject:css-->
-    <link rel="stylesheet" href="/public/css/site.css">
+    <link rel="stylesheet" href="/src/client/css/site.css">
     <!-- endinject-->
   </head>
   <body data-ng-app="booku">
-    <header class="container">
+    <header class="navbar-brand">
       <div id="menu" class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-header">
           <div id="logo">
             <button data-toggle="collapse" data-target=".navbar-collapse" class="btn btn-success navbar-toggle"><span class="glyphicon glyphicon-list"></span></button><a href="#/">
-              <h3>Booku</h3></a>
+              <h1>Booku</h1></a>
           </div>
         </div>
         <div id="logoIcons" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+            <li class="nav"><a href="#/">Home</a></li>
+            <li class="nav"><a href="#/books">Book List</a></li>
             <li class="nav"> <a>Kenrick Wu</a></li>
             <li class="nav"><a href="http://www.gulpjs.com" target="_blank"><img src="/images/gulp-tiny.png"></a></li>
             <li class="nav"><a href="http://www.angularjs.org" target="_blank"><img src="/images/mongodb.png" target="blank"></a></li>
@@ -30,14 +33,8 @@
         </div>
       </div>
     </header>
-    <section id="navList" class="col-md-2 inverse">
-      <ul>
-        <li> <span class="glyphicon glyphicon-home"> </span><a href="#/"> Home</a></li>
-        <li> <span class="glyphicon glyphicon-pencil"></span><a href="#/author"> Authors</a></li>
-      </ul>
-    </section>
-    <section id="main" class="col-md-10">
-      <div ng-view></div>
+    <section id="main">
+      <div ui-view></div>
       <!-- bower:js-->
       <script src="lib/jquery/dist/jquery.js"></script>
       <script src="lib/angular/angular.js"></script>
@@ -45,12 +42,15 @@
       <script src="lib/angular-route/angular-route.js"></script>
       <script src="lib/angular-animate/angular-animate.js"></script>
       <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+      <script src="lib/toastr/toastr.js"></script>
+      <script src="lib/ui-router/release/angular-ui-router.js"></script>
       <!-- endbower-->
       <!-- inject:js-->
-      <script src="/public/app/app.js"></script>
-      <script src="/public/app/book/bookController.js"></script>
-      <script src="/public/app/main/homeController.js"></script>
-      <script src="/public/app/services/bookService.js"></script>
+      <script src="/src/client/app/app.js"></script>
+      <script src="/src/client/app/book/bookController.js"></script>
+      <script src="/src/client/app/book/bookListController.js"></script>
+      <script src="/src/client/app/book/editBookController.js"></script>
+      <script src="/src/client/app/services/bookService.js"></script>
       <!-- endinject-->
     </section>
     <footer>

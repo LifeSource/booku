@@ -9,13 +9,12 @@ module.exports = function(app) {
 	// API routes
 	app.use("/api/books", bookRouter);
 
-	// render the angular partials
+	// View routes
 	app.get("/partials/*", function (req, res) {
-		res.render("../public/app/" + req.params[0]);	
+		res.render("../../client/app/" + req.params[0]);	
 	});
 
 	app.get("*", function(req, res) {
-		//res.render("index");
 		res.render("index", { title: "Booku" });
 	});
 };

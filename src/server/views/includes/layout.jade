@@ -8,16 +8,20 @@ html
 		// inject:css
 		// endinject
 	body(data-ng-app="booku")
-		header.container
-			div#menu.navbar.navbar-inverse.navbar-fixed-top
-				div.navbar-header
-					div#logo
+		header.navbar-brand
+			#menu.navbar.navbar-inverse.navbar-fixed-top
+				.navbar-header
+					#logo
 						button(data-toggle="collapse" data-target=".navbar-collapse").btn.btn-success.navbar-toggle
 							span.glyphicon.glyphicon-list
 						a(href="#/")
-							h3 Booku
-				div#logoIcons.navbar-collapse.collapse
+							h1 Booku
+				#logoIcons.navbar-collapse.collapse
 					ul.nav.navbar-nav.navbar-right
+						li.nav
+							a(href="#/") Home
+						li.nav
+							a(href="#/books") Book List
 						li.nav 
 							a Kenrick Wu
 						li.nav
@@ -35,15 +39,7 @@ html
 						li.nav
 							a(href="http://www.nodejs.org" target="_blank")
 								img(src="/images/nodejs.png")
-		section#navList.col-md-2.inverse
-			ul
-				li 
-					span.glyphicon.glyphicon-home 
-					a(href="#/")  Home
-				li 
-					span.glyphicon.glyphicon-pencil
-					a(href="#/author")  Authors
-		section#main.col-md-10
+		section#main
 			block content
 			// bower:js
 			// endbower

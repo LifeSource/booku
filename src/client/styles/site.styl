@@ -2,15 +2,22 @@ niceGreen= #0cff00
 liveYellow = #fcff00
 brightOrange = #ffa200
 coolBlack = #3b3b32
+deepBlue = #1968c1
 bluey = #30aadc
 greener = #7fe39e
+redder = #c12919
+coolOrange = #fbe685
 
 body
-	margin-top 55px
-	
+	padding 0px
+	margin-top 65px	
+
 h1, h2, h3, h4, h5, h6
 	font-weight normal
 	
+h1
+	margin 0px
+
 a, a:link, a:visited, a:hover, a:active
 	color #ccc
 	text-decoration none
@@ -18,6 +25,9 @@ a, a:link, a:visited, a:hover, a:active
 // ---------------------------------------------------------------------
 // Header Section
 // ---------------------------------------------------------------------
+
+.navbar
+	background  coolBlack
 
 #logo
 	margin-left 30px
@@ -31,19 +41,20 @@ a, a:link, a:visited, a:hover, a:active
 
 #navList
 	float left
-	width 200px
+	width 250px
 	height 600px
+	padding 0px
 	font-size 18px
 	color #fff
-	background coolBlack
+	background #5b5b59
 
 #navList ul
 	margin 0
-	padding 5px
+	padding 0
 	list-style none
 
 #navList li
-	margin 0 auto
+	margin 10px 0 
 	padding 10px 0
 	display block
 
@@ -51,9 +62,57 @@ a, a:link, a:visited, a:hover, a:active
 	background bluey
 	transition background 1.0s ease
 
+#navList span
+	margin-left 30px
+
 // ---------------------------------------------------------------------
 // Main content
 // ---------------------------------------------------------------------
+
+td a,
+td a:link, 
+td a:visited, 
+td a:active
+	color bluey
+
+#meanList li
+	float left
+	list-style none
+	font-family courier
+
+#meanList li:hover
+	background #fff
+	transition background 1.0s ease
+
+#meanList div
+	margin-top 50px
+
+.tech 
+	width 300px
+	height 200px
+	margin 10px
+	border-radius 8px
+
+#mongo
+	background #fbe685
+
+#node
+	background #06e225
+
+#express
+	background #f5f758
+
+#angular
+	background #58aaf7
+
+#gulp
+	background #b54e3a
+
+#git
+	background #a8bfbb
+
+.jumbotron
+	padding 50px
 
 footer
 	clear both
@@ -63,23 +122,20 @@ footer
 // ---------------------------------------------------------------------
 
 #dashboard
-	margin-top 20px
 	list-style none
 
 .tile
 	float left
-	display block
 	height 120px
 	width 150px
 	padding 20px 0
 	margin 20px 20px
+	border-radius 10px
 
 .title-author
 	background-color brightOrange 
-
 .tile-book
 	background-color bluey
-
 .tile-add
 	background niceGreen
 
@@ -91,6 +147,7 @@ footer
 	color #fff 
 	font-size 30px
 
+.glyphicon.glyphicon-home,
 .glyphicon.glyphicon-book,
 .glyphicon.glyphicon-education,
 .glyphicon.glyphicon-plus
@@ -106,19 +163,19 @@ footer
 .tile
 	padding 10px 0 0 10px
 	
+.tile-icon
+	margin-right 20px
+	float right
+
 .tile-icon p 
-	color #fff
-	display inline
-	font-size 60px
 	padding 0
-
-// .tile-icon 
-// 	height 55px
-// 	width 55px
+	display inline
+	color #fff
+	font-size 60px
 
 // ------------------------------------------
-// Add Form
+// Forms
 // ------------------------------------------
-
-#addForm
-	margin-top 10px
+.panel
+	margin-top 50px
+	margin-left 50px

@@ -1,0 +1,57 @@
+.container
+	.row
+		ul#dashboard
+			li.tile.title-author
+				a(ui-sref="home")
+					div.tile-icon
+						i.glyphicon.glyphicon-education
+					div
+						a(href="#/authors")
+							span.bold Authors
+			li.tile.tile-book
+				a(ui-sref="bookList")
+					div.tile-icon
+						i.glyphicon.glyphicon-book 
+						span {{ books.length }}
+					div
+						span.bold Books
+			li.tile.tile-add
+				a(ui-sref="bookEdit({ bookId: 0})")
+					div.tile-icon
+						i.glyphicon.glyphicon-plus
+					div
+						span.bold Add
+	.row
+		hr
+		.form-group
+			label.col-md-1.control-label Order by:
+			.col-md-3
+				select.form-control
+					option Title
+					option Author
+					option Genre
+					option Price
+
+			.col-md-2
+				button.btn.btn-primary search
+	.row
+		hr
+		table.table.table-striped
+			thead
+				tr.success
+					th Title
+					th Author 
+					th Genre
+					th Price
+					th Edit
+			tbody
+				tr(ng-repeat="book in vm.books")
+					td 
+						a(href="#/book/edit/{{book._id}}") 
+							span {{ book.title }}
+					td {{ book.author }}
+					td {{ book.genre }}
+					td {{ book.price | currency }}
+					td 
+						a(href="#/book/edit/{{book._id}}") 
+							i.glyphicon.glyphicon-pencil

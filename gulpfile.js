@@ -13,12 +13,12 @@ gulp.task("default", ["build"]);
 gulp.task("help", $.taskListing);
 
 gulp.task("build", function (done) {
-	runSequence("lint",
-		"jade", "dev", done);
+	runSequence("lint", "jade", "dev", done);
 });
 
 // Linting
 gulp.task("lint", function () {
+
 	log("*** Linting scripts for errors");
 	return gulp.src(config.alljs)
 		.pipe($.jshint())

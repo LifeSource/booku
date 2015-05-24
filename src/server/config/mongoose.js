@@ -5,7 +5,6 @@ var seedData = require("../models/seedData");
 module.exports = function(config) {
 
 	mongoose.connect(config.db);
-
 	var database = mongoose.connection;
 
 	Book.find({}).exec(function (err, books) {

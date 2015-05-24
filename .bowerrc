@@ -1,5 +1,5 @@
 {
-	"directory": "public/lib",
+	"directory": "src/client/lib",
 	"scripts": {
 		"postinstall": "gulp wiredep"
 	} 

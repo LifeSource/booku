@@ -1,9 +1,9 @@
 module.exports = function () {
 	
 	var temp = "./.tmp/",
-		server = "./",
+		server = "./src/server/",
 		ignore = server + "node_modules/",
-		client = "./public/",
+		client = "./src/client/",
 		clientApp = client + "app/",
 		css = client + "css/",
 		siteCss = css + "site.css",

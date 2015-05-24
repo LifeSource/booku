@@ -8,7 +8,7 @@ module.exports = function (app, config) {
 
 	// chose to use the jade templating engine
 	app.set("view engine", "jade");
-	app.set("views", path.resolve(config.rootPath, "booku/views"));
+	app.set("views", path.resolve(config.rootPath, "server/views"));
 
 	// middlewares
 	app.use(cookieParser());
@@ -16,6 +16,6 @@ module.exports = function (app, config) {
 	app.use(bodyParser.json());
 
 	// static files
-	app.use(express.static(path.resolve(config.rootPath, "booku/public")));
+	app.use(express.static(path.resolve(config.rootPath, "client/")));
 	app.use(express.static("./"));
 };

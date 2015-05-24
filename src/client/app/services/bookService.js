@@ -4,7 +4,7 @@
 	var bookService = function ($http) {
 		
 		var apiPath = {
-			books: "/api/books"
+			books: "/api/books/"
 		};
 
 		var getBooks = function () {
@@ -13,8 +13,16 @@
 			});			
 		};
 
+		var getBookById = function (id) {
+			return $http.get(apiPath.books + id).then(
+				function (response) {
+					return response.data;
+				});
+		};
+
 		return {
-			getBooks: getBooks
+			getBooks: getBooks,
+			getBookById: getBookById
 		};
 	};
 
