@@ -13,54 +13,31 @@ h6 {
 h1 {
   margin: 0px;
 }
+#logo a,
+#logo a:visited,
+#logo a:hover,
+#logo a:active {
+  color: #ccc;
+}
 a,
 a:link,
 a:visited,
-a:hover,
 a:active {
-  color: #ccc;
   text-decoration: none;
 }
 .navbar {
   background: #3b3b32;
 }
 #logo {
+  margin-top: 5px;
   margin-left: 30px;
 }
 #logoIcons img {
   height: 20px;
 }
-#navList {
-  float: left;
-  width: 250px;
-  height: 600px;
-  padding: 0px;
-  font-size: 18px;
+.table thead th {
   color: #fff;
-  background: #5b5b59;
-}
-#navList ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-#navList li {
-  margin: 10px 0;
-  padding: 10px 0;
-  display: block;
-}
-#navList li:hover {
-  background: #30aadc;
-  transition: background 1s ease;
-}
-#navList span {
-  margin-left: 30px;
-}
-td a,
-td a:link,
-td a:visited,
-td a:active {
-  color: #30aadc;
+  background-color: #626257;
 }
 #meanList li {
   float: left;
@@ -152,13 +129,44 @@ footer {
   margin-right: 20px;
   float: right;
 }
-.tile-icon p {
-  padding: 0;
-  display: inline;
-  color: #fff;
-  font-size: 60px;
+form {
+  background-color: #a4c8e8;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px #ccc;
+  color: #404040;
+  font-size: 16px;
+  padding: 30px 20px;
 }
-.panel {
-  margin-top: 50px;
-  margin-left: 50px;
+form legend {
+  color: #404040;
+  font-size: 42px;
+  font-family: "cookie", courier, cursive;
+  font-weight: normal;
+  line-height: 1;
+  text-shadow: 0 3px 0 rgba(0,0,0,0.1);
+}
+.wizard a {
+  background: #efefef;
+  display: inline-block;
+  margin-right: 5px;
+  min-width: 150px;
+  outline: none;
+  padding: 10px 40px 10px;
+  position: relative;
+  text-decoration: none;
+}
+.wizard .active {
+  background: #007acc;
+  color: #fff;
+}
+.panel-footer button {
+  width: 80px;
+  margin-right: 10px;
+}
+#saveButton {
+  width: 80px;
+  margin-right: 10px;
+}
+#cancelButton {
+  width: 70px;
 }

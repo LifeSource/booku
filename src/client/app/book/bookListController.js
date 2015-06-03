@@ -2,26 +2,29 @@
 	
 	"use strict";
 
-	var BookListController = function ($location, bookService) {
+	var BookListController = function (bookResource, bookService) {
 		
 		var vm = this;
 
-		var onComplete = function (response) {
-			vm.books = response;
+		vm.options = [ "title", "author", "genre", "publisher", "price", "date" ];
+		vm.sortOption = vm.options[0];
+
+		vm.clearSearch = function() {
+			vm.searchTerm = "";
 		};
 
-		var onError = function (reason) {
-			console.log("Unable to fetch book data: " + reasons);
+		var onComplete = function (data) {
+			vm.books = data;	
+			toastr.info("Books collection loaded successfully!");
 		};
 
-		bookService.getBooks().then(onComplete, onError);
-		
-		vm.editBook = function (id) {
-			console.log(id);
-			$location.path("/book/edit/"+id);
+		var onError = function (err) {
+			toastr.error("Unable to fetch the data: " + err);
 		};
+
+		bookService.query().then(onComplete, onError);
 	};
 
-	app.controller("BookListController", ["$location", "bookService", BookListController]);
+	app.controller("BookListController", ["bookResource", "bookService", BookListController]);
 
 }(angular.module("booku")));

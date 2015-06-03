@@ -1,1 +1,0 @@
-!function(o){"use strict";var t=function(o){var t={books:"/api/books"},n=function(){return o.get(t.books).then(function(o){return o.data})};return{getBooks:n}};o.factory("bookService",t)}(angular.module("booku"));

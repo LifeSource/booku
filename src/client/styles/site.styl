@@ -7,6 +7,7 @@ bluey = #30aadc
 greener = #7fe39e
 redder = #c12919
 coolOrange = #fbe685
+gunmetal = #626257
 
 body
 	padding 0px
@@ -17,9 +18,17 @@ h1, h2, h3, h4, h5, h6
 	
 h1
 	margin 0px
+	
+#logo a, 
+#logo a:visited, 
+#logo a:hover,
+#logo a:active
 
-a, a:link, a:visited, a:hover, a:active
 	color #ccc
+a,
+a:link,
+a:visited, 
+a:active
 	text-decoration none
 
 // ---------------------------------------------------------------------
@@ -30,50 +39,19 @@ a, a:link, a:visited, a:hover, a:active
 	background  coolBlack
 
 #logo
+	margin-top 5px
 	margin-left 30px
 
 #logoIcons img
 	height 20px
 
 // ---------------------------------------------------------------------
-// Side bar and navigation
-// ---------------------------------------------------------------------
-
-#navList
-	float left
-	width 250px
-	height 600px
-	padding 0px
-	font-size 18px
-	color #fff
-	background #5b5b59
-
-#navList ul
-	margin 0
-	padding 0
-	list-style none
-
-#navList li
-	margin 10px 0 
-	padding 10px 0
-	display block
-
-#navList li:hover
-	background bluey
-	transition background 1.0s ease
-
-#navList span
-	margin-left 30px
-
-// ---------------------------------------------------------------------
 // Main content
 // ---------------------------------------------------------------------
 
-td a,
-td a:link, 
-td a:visited, 
-td a:active
-	color bluey
+.table thead th
+	color #fff
+	background-color gunmetal
 
 #meanList li
 	float left
@@ -134,8 +112,10 @@ footer
 
 .title-author
 	background-color brightOrange 
+
 .tile-book
 	background-color bluey
+
 .tile-add
 	background niceGreen
 
@@ -167,15 +147,49 @@ footer
 	margin-right 20px
 	float right
 
-.tile-icon p 
-	padding 0
-	display inline
-	color #fff
-	font-size 60px
-
 // ------------------------------------------
 // Forms
 // ------------------------------------------
-.panel
-	margin-top 50px
-	margin-left 50px
+
+form
+	background-color #a4c8e8
+	//background-color gunmetal 
+	border-radius 2px
+	box-shadow 0 1px 1px #ccc
+	color #404040
+	//color #fff
+	font-size 16px
+	padding 30px 20px
+
+form legend
+	color #404040
+	font-size 42px
+	font-family "cookie", courier, cursive
+	font-weight normal
+	line-height 1
+	text-shadow 0 3px 0 rgba(0, 0, 0, 0.1);
+
+.wizard a
+	background #efefef
+	display inline-block
+	margin-right 5px
+	min-width 150px
+	outline none
+	padding 10px 40px 10px
+	position relative
+	text-decoration none
+
+.wizard .active
+	background #007acc
+	color #fff
+
+.panel-footer button
+	width 80px
+	margin-right 10px
+	
+#saveButton
+	width 80px
+	margin-right 10px
+
+#cancelButton
+	width 70px

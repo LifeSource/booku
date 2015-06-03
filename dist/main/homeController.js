@@ -1,1 +1,0 @@
-!function(o){"use strict";var e=function(o,e){o.message="Home Controller";var n=function(e){o.books=e},t=function(o){console.log("Unable to fetch book data: "+reasons)};e.getBooks().then(n,t)};o.controller("HomeController",["$scope","bookService",e])}(angular.module("booku"));

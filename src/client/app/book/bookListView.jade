@@ -2,56 +2,62 @@
 	.row
 		ul#dashboard
 			li.tile.title-author
-				a(ui-sref="home")
+				a(ui-sref="about")
 					div.tile-icon
 						i.glyphicon.glyphicon-education
 					div
-						a(href="#/authors")
-							span.bold Authors
+						a(ui-sref="about")
+							span.bold About Me 
 			li.tile.tile-book
 				a(ui-sref="bookList")
 					div.tile-icon
 						i.glyphicon.glyphicon-book 
-						span {{ books.length }}
+						span {{ vm.books.length }}
 					div
-						span.bold Books
+						span.bold Collection
 			li.tile.tile-add
-				a(ui-sref="bookEdit({ bookId: 0})")
+				a(ui-sref="bookAdd")
 					div.tile-icon
 						i.glyphicon.glyphicon-plus
 					div
-						span.bold Add
+						span.bold Book
 	.row
 		hr
 		.form-group
-			label.col-md-1.control-label Order by:
-			.col-md-3
-				select.form-control
-					option Title
-					option Author
-					option Genre
-					option Price
-
+			.col-md-1
+				label(for="sortOption").control-label Order by:
 			.col-md-2
-				button.btn.btn-primary search
+				select(id="sortOption" ng-model="vm.sortOption").form-control
+					option(ng-repeat="opt in vm.options") {{ opt }}
+		.form-group
+			.col-md-1
+				label(for="searchFilter").control-label Search:
+			.col-md-6
+				input(id="searchFilter" name="searchFilter" placeholder="Search for a book by entering its title here ..." ng-model="vm.searchTerm").form-control
+			.col-md-1
+				button(ng-click="vm.clearSearch()").btn.btn-primary clear 
 	.row
 		hr
-		table.table.table-striped
+		table.table.table-striped.table-bordered
 			thead
-				tr.success
+				tr
 					th Title
 					th Author 
 					th Genre
+					th Publisher
+					th Date
 					th Price
 					th Edit
 			tbody
-				tr(ng-repeat="book in vm.books")
+				tr(ng-repeat="book in vm.books | orderBy: vm.sortOption | filter: vm.searchTerm")
 					td 
-						a(href="#/book/edit/{{book._id}}") 
+						a(ui-sref="bookDetail({ bookId: book._id })")
 							span {{ book.title }}
 					td {{ book.author }}
 					td {{ book.genre }}
+					td {{ book.publisher }}
+					td {{ book.publishedDate | date }}
 					td {{ book.price | currency }}
 					td 
-						a(href="#/book/edit/{{book._id}}") 
+						a(ui-sref="bookEdit.info({ bookId: book._id })")
 							i.glyphicon.glyphicon-pencil

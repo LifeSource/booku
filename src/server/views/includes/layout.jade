@@ -14,16 +14,16 @@ html
 					#logo
 						button(data-toggle="collapse" data-target=".navbar-collapse").btn.btn-success.navbar-toggle
 							span.glyphicon.glyphicon-list
-						a(href="#/")
+						a(ui-sref="home")
 							h1 Booku
 				#logoIcons.navbar-collapse.collapse
 					ul.nav.navbar-nav.navbar-right
 						li.nav
-							a(href="#/") Home
+							a(ui-sref="home") Home
 						li.nav
-							a(href="#/books") Book List
+							a(ui-sref="bookList") Book List
 						li.nav 
-							a Kenrick Wu
+							a(ui-sref="about") Kenrick Wu
 						li.nav
 							a(href="http://www.gulpjs.com" target="_blank")
 								img(src="/images/gulp-tiny.png")

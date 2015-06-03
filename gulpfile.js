@@ -39,6 +39,37 @@ gulp.task("watch-styles", function () {
 	gulp.watch(config.stylus, ["styles"]);
 });
 
+// fonts
+gulp.task("fonts", ["clean-fonts"], function () {
+	log("*** Copying fonts");
+	return gulp.src(config.fonts)
+		.pipe(gulp.dest(config.build + "fonts"));
+});
+
+// images
+gulp.task("images", ["clean-images"], function () {
+	log("*** Copying  and compression the images");	
+	return gulp.src(config.images)
+		.pipe($.imagemin({ optimizationlevel: 4 }))
+		.pipe(gulp.dest(config.build + "images"));
+});
+
+gulp.task("clean", function (done) {
+	var delconfig = [].concat(config.build, config.css);
+	log("Cleaning: " +  $.util.colors.blue(delconfig));
+	del(delconfig, done);
+});
+
+gulp.task("clean-fonts", function (done) {
+	log("*** Cleaning out the fonts");
+	clean(config.build + "fonts/**/*.*", done);
+});
+
+gulp.task("clean-images", function (done) {
+	log("*** Cleaning out the images");
+	clean(config.build + "images/**/*.*", done);
+});
+
 gulp.task("clean-styles", function (done) {
 	log("*** Cleaning out the css");
 	clean(config.css + "**/*.*", done);
@@ -78,6 +109,12 @@ gulp.task("inject", ["wiredep", "styles"], function () {
 		.pipe($.inject(gulp.src(config.siteCss)))
 		.pipe(gulp.dest(config.client));
 });
+
+// tests
+gulp.task("test", ["lint"], function () {
+	startTest(true, done);
+});
+
 
 // nodemon
 gulp.task("dev", ["inject"], function () {
@@ -176,4 +213,28 @@ function startBrowserSync() {
 	};
 
 	browserSync(options);
+}
+
+function startTests(singleRun, done) {
+	
+	var karma = require("karma").server;
+	var excludeFiles = [];
+	var serverSpecs = config.serverIntegrationSpecs;
+
+	excludeFiles = serverSpecs;
+
+	karma.start({
+		config: __dirname + "/karma.config/js",
+		exclude: execludeFiles,
+		single: !!singleRun
+	}, karmaCompleted);
+	
+	function karmaCompleted(karmaResult) {
+		log("Karma completed!");
+		if (karmaResult === 1) {
+			done("karma: tess failed with code " + karmaResult);
+		} else {
+			done();
+		}
+	}
 }

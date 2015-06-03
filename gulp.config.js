@@ -1,6 +1,7 @@
 module.exports = function () {
 	
 	var temp = "./.tmp/",
+		build = "./build/",
 		server = "./src/server/",
 		ignore = server + "node_modules/",
 		client = "./src/client/",
@@ -13,7 +14,9 @@ module.exports = function () {
 		layout = views + "includes/layout.jade",
 		jade = views + "index.jade",
 		index = client + "index.html",
-		vendor = [server + "node_modules/**/*", client + "lib/**/*"];
+		nodeModules = "./node_modules/",
+		bowerComponents = "./bower_components/",
+		vendor = [nodeModules, bowerComponents];
 
 	var config = {
 		/*
@@ -21,8 +24,8 @@ module.exports = function () {
 		 */
 		port: process.env.PORT || 3000,
 		nodeServer: server + "server.js",
-		build: server + "build/",
-		extensions: "js jade styl",
+		build: build,
+		extensions: "js html css jade styl",
 		ignore: vendor,
 		/*
 		 * File paths
@@ -33,11 +36,14 @@ module.exports = function () {
 			"!" + vendor 
 		],
 		js: [
+			client + "common/**/*.js",
 			clientApp + "**/*.js"
 		],
 		server: server, 
 		client: client,
 		clientApp: clientApp,
+		fonts: bowerComponents + "font-awesome/fonts/**/*.*",
+		images: client + "images/**/*.*",
 		/*
 		 * Stylus and Jade
 		 */
@@ -53,10 +59,15 @@ module.exports = function () {
 		 */
 		bower: {
 			json: "./bower.json",
-			directory: client + "lib/",
+			directory: bowerComponents,
 			ignore: "../.."
 		},
-		bowserReloadDelay: 1000
+		bowserReloadDelay: 1000,
+		/*
+		 * Karma and Tests
+		 */
+		serverIntegrationSpecs: [client + "tests/server-integration/**/*.spec.js"],
+
 	};
 
 	config.getWiredepDefaultOptions = function () {
@@ -68,4 +79,26 @@ module.exports = function () {
 	};
 
 	return config;
+
+	// karma
+	function getKarmaOptions() {
+		var options = {
+			files: [].concat(
+				bowerFiles,
+				config.specHelpers,
+				clientApp + "app.js",
+				client + "common/**/*.js",
+				client + "**/*.js"
+			),
+			exclude: [],
+			coverage: {
+				dir: report + "coverage",
+				reporters: [
+
+				]
+			}
+		};
+
+		return options;
+	}
 };
