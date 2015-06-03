@@ -33,7 +33,7 @@
 			.col-md-1
 				label(for="searchFilter").control-label Search:
 			.col-md-6
-				input(id="searchFilter" name="searchFilter" placeholder="Search for a book by entering its title here ..." ng-model="vm.searchTerm").form-control
+				input(id="searchFilter" name="searchFilter" placeholder="Search for a book by entering its title here ..." ng-model="vm.searchTerm.title").form-control
 			.col-md-1
 				button(ng-click="vm.clearSearch()").btn.btn-primary clear 
 	.row
@@ -49,7 +49,7 @@
 					th Price
 					th Edit
 			tbody
-				tr(ng-repeat="book in vm.books | orderBy: vm.sortOption | filter: vm.searchTerm")
+				tr(ng-repeat="book in vm.books | orderBy: vm.sortOption | filter: vm.searchTerm:strict")
 					td 
 						a(ui-sref="bookDetail({ bookId: book._id })")
 							span {{ book.title }}
