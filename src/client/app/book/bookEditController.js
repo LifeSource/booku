@@ -22,6 +22,13 @@
 			toastr.error("Unable to fetch the data: " + err);
 		};
 
+		vm.open = function ($event) {
+			$event.preventDefault();
+			$event.stopPropagation();
+
+			vm.opened = !vm.opened;
+		};
+
 		vm.cancel = function () {
 			$state.go("bookList");
 		};
