@@ -126,7 +126,7 @@ gulp.task("dev", ["inject"], function () {
 		ext: config.extensions,
 		env: { 
 			"PORT": config.port,
-			"NODE_ENV" : isDev ? "development" : "production" 
+			"NODE_ENV" : isDev ? "dev" : "production" 
 		},
 		watch: [config.server],
 		ignore: config.ignore
