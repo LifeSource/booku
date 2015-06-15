@@ -224,9 +224,9 @@ function startTests(singleRun, done) {
 	excludeFiles = serverSpecs;
 
 	karma.start({
-		config: __dirname + "/karma.config/js",
+		configFile: __dirname + "/karma.config/js",
 		exclude: execludeFiles,
-		single: !!singleRun
+		singleRun: !!singleRun
 	}, karmaCompleted);
 	
 	function karmaCompleted(karmaResult) {

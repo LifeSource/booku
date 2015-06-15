@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
-	"node": "0.12.x",
-	"npm": "2.8.x"
+    "node": "0.12.x",
+    "npm": "2.8.x"
   },
   "author": "Kenrick Wu",
   "license": "ISC",
@@ -22,28 +22,40 @@
     "stylus": "^0.50.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.6.4",
-    "del": "^1.1.1",
-    "gulp": "^3.8.11",
+    "browser-sync": "^2.7.10",
+    "chai": "^3.0.0",
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
     "gulp-concat": "^2.5.2",
     "gulp-filter": "^2.0.2",
     "gulp-if": "^1.2.5",
     "gulp-imagemin": "^2.2.1",
-    "gulp-inject": "^1.2.0",
-    "gulp-jade": "^1.0.0",
-    "gulp-jscs": "^1.5.2",
+    "gulp-inject": "^1.3.1",
+    "gulp-jade": "^1.0.1",
+    "gulp-jscs": "^1.6.0",
     "gulp-jshint": "^1.10.0",
     "gulp-load-plugins": "^0.10.0",
-    "gulp-nodemon": "^2.0.2",
+    "gulp-nodemon": "^2.0.3",
     "gulp-plumber": "^1.0.0",
     "gulp-print": "^1.1.0",
     "gulp-stylus": "^2.0.1",
     "gulp-task-listing": "^1.0.0",
     "gulp-uglify": "^1.2.0",
-    "gulp-util": "^3.0.4",
+    "gulp-util": "^3.0.5",
     "jshint-stylish": "^1.0.2",
+    "karma": "^0.12.36",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-coverage": "^0.4.2",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "karma-sinon": "^1.0.4",
+    "mocha": "^2.2.5",
+    "phantomjs": "^1.9.17",
     "run-sequence": "^1.1.0",
+    "sinon": "^1.15.3",
+    "sinon-chai": "^2.8.0",
     "wiredep": "^2.2.2",
-    "yargs": "^3.7.2"
+    "yargs": "^3.10.0"
   }
 }
