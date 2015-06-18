@@ -35,7 +35,14 @@
 			publishedDate: new Date("Feb 1, 2008"),
             price: 55.0,
 			summary: "Even bad code can function. But if code isn’t clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn’t have to be that way."
-        }
+        }, {
+			title: "Opening the door to your heart",
+			author: "Ajahn Brahm",
+			genre: "Spiritual",
+			publisher: "Hachette Australia",
+			price: 23.55,
+			summary: ""
+		}
     ];
 
 }(module.exports));
