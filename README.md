@@ -20,7 +20,7 @@ I'll be honest, the first choice was because its FREE as I'm on a budget and can
 # Source Control
 - Git as the source control of choice because it was flexible and easy to use, most importantly its Open Source. My roots were in Open Source because I started with Unix/Linux in school, so you could say its a natural fit.
 
-# Languages and ibraries
+# Languages and libraries
 - HTML/CSS (do I have a choice as a we developer?) 
 - JavaScript (it's a love/hate relationship, what can I say?)
 - Toastr for the notification pop-up.
