@@ -4,15 +4,20 @@ Booku is a web application built with the MEAN stack using open source tools. Th
 
 The following tools and technologies were used during the project, I've also outlined the reasons why I chose these over others.
 
-# Operation System
+# Operation System 
 MAC OSX Yosemite
+
+# Editor/IDE
+Terminal Vim - my highly customised terminal built for web development.
 
 # Web Stack 
 - MEAN stack (MongoDB, ExpressJS, AngularJS, NodeJS). 
 I'll be honest, the first choice was because its FREE as I'm on a budget and cannot afford expensive technologies like MS SQL Server or Oracle database which requires developers to pay for licences. The other reasons was the fact that I wanted to try and learn what this 'NoSQL' business was and MongoDB was the big boy in town. I wasn't familar with RavenDB, CouchDB but have heard of them.
 
-# Build and automation
+# Build and automation tools
 - Gulp as the build and automation tool, I didn't chose Grunt because I like the streaming nature of Gulp as well as its easy to use API/syntax.
+- NPM used by node to fetch server side packages.
+- Bower used to fetch client side dependencies.
 
 # Testing
 - Karma as the test runner and Jasmine as the testing framework. I chose these two because I liked the Jasmine BDD approach and its syntax. Karma because its a natural fit for AngularJS development as its used by the Angular team internally.
