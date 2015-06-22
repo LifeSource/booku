@@ -37,7 +37,8 @@ module.exports = function () {
 		],
 		js: [
 			client + "common/**/*.js",
-			clientApp + "**/*.js"
+			clientApp + "**/*.js",
+			"!" + client + "**/*.spec.js"
 		],
 		server: server, 
 		client: client,

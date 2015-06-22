@@ -2,6 +2,9 @@
 
 Booku is a web application built with the MEAN stack using open source tools. The aim of this project was for me to hone all the web development skills and techinique I've learnt from video training, blogs and other sources and build an entire end-to-end web application from the front-end to the back-end persisting data in an actual database.
 
+# ATTENTION:
+Due to changes to the Bootstrap library 3.3.5, wiredep will no longer be able to inject the bootstrap.css files appropriately.
+
 The following tools and technologies were used during the project, I've also outlined the reasons why I chose these over others.
 
 # Operation System 

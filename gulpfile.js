@@ -18,7 +18,6 @@ gulp.task("build", function (done) {
 
 // Linting
 gulp.task("lint", function () {
-
 	log("*** Linting scripts for errors");
 	return gulp.src(config.alljs)
 		.pipe($.jshint())
