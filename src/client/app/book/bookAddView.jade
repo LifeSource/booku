@@ -13,7 +13,7 @@
 								span.input-group-addon
 									span.glyphicon.glyphicon-file
 								input(id="title" name="title" type="text" placeholder="Book title (required)" data-ng-model="vm.book.title" required).form-control
-						span(ng-show="bookForm.title.$invalid").help-block.has-error Book title is required.
+						span(ng-show="bookForm.title.$invalid && bookForm.title.$dirty").help-block.has-error Book title is required.
 					
 					.form-group(ng-class="{'has-error': bookForm.author.$invalid && bookForm.author.$dirty }")
 						label(for="author").control-label.col-md-2 Author:
@@ -22,7 +22,7 @@
 								span.input-group-addon
 									span.glyphicon.glyphicon-user
 								input(id="author" name="author" type="text" placeholder="Author (required)" data-ng-model="vm.book.author" required).form-control
-						span(ng-show="bookForm.author.$invalid").help-block.has-error Author is required.
+						span(ng-show="bookForm.author.$invalid && bookForm.author.$dirty").help-block.has-error Author is required.
 
 					.form-group
 						label(for="genre").control-label.col-md-2 Genre:
