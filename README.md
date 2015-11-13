@@ -2,6 +2,15 @@
 
 Booku is a web application built with the MEAN stack using open source tools. The aim of this project was for me to hone all the web development skills and techinique I've learnt from video training, blogs and other sources and build an entire end-to-end web application from the front-end to the back-end persisting data in an actual database.
 
+# Installation
+
+The following should be done in the terminal, please note I have setup MongoDB to run as a services/dameon on my Mac when the computer starts up, you may need to run MongoDB manually for your environment:
+
+    1. git clone <repository url>
+    2. npm install
+    3. bower install
+    4. execute gulp
+
 # Operation System 
 MAC OSX Yosemite
 
@@ -24,7 +33,7 @@ I'll be honest, the first choice was because its FREE as I'm on a budget and can
 - Git as the source control of choice because it was flexible and easy to use, most importantly its Open Source. My roots were in Open Source because I started with Unix/Linux in school, so you could say its a natural fit.
 
 # Languages and libraries
-- HTML/CSS (do I have a choice as a we developer?) 
+- HTML/CSS (do I have a choice as a web developer?) 
 - JavaScript (it's a love/hate relationship, what can I say?)
 - Toastr for the notification pop-up.
 - UI-Router for the Angular Routing, I did start with the built-in Angular routing but I wanted to try UI-Router to taste the difference as I like to explore and expands my knowledge.
