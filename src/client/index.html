@@ -1,67 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app="booku">
   <head>
     <title></title>
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <!-- build:css styles/lib.css -->
     <!-- bower:css-->
     <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="../../bower_components/toastr/toastr.css" />
     <!-- endbower-->
+    <!-- endbuild -->
+    <!-- build:css styles/app.css -->
     <!-- inject:css-->
     <link rel="stylesheet" href="/src/client/css/site.css">
     <!-- endinject-->
+    <!-- endbuild -->
   </head>
-  <body data-ng-app="booku">
-    <header class="navbar-brand">
-      <div id="menu" class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-header">
-          <div id="logo">
-            <button data-toggle="collapse" data-target=".navbar-collapse" class="btn btn-success navbar-toggle"><span class="glyphicon glyphicon-list"></span></button><a ui-sref="home">
-              <h1>Booku</h1></a>
-          </div>
-        </div>
-        <div id="logoIcons" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="nav"><a ui-sref="home">Home</a></li>
-            <li class="nav"><a ui-sref="bookList">Book List</a></li>
-            <li class="nav"> <a ui-sref="about">Kenrick Wu</a></li>
-            <li class="nav"><a href="http://www.gulpjs.com" target="_blank"><img src="/images/gulp-tiny.png"></a></li>
-            <li class="nav"><a href="http://www.angularjs.org" target="_blank"><img src="/images/mongodb.png" target="blank"></a></li>
-            <li class="nav"><a href="http://www.expressjs.com" target="_blank"><img src="/images/expressjs.png"></a></li>
-            <li class="nav"><a href="http://www.angularjs.org" target="_blank"><img src="/images/angularjs-small.png" target="blank"></a></li>
-            <li class="nav"><a href="http://www.nodejs.org" target="_blank"><img src="/images/nodejs.png"></a></li>
-          </ul>
-        </div>
+  <body>
+      <div data-ng-controller="HomeController as vm">
+          <div data-ng-include="'app/layout/nav.html'"></div>
+          <section class="main">
+             <data-ui-view></data-ui-view>
+          </section>
+          <footer>
+              <p class="text-center">Kenrick Wu &copy; {{ vm.year }}</p>
+          </footer>
       </div>
-    </header>
-    <section id="main">
-      <div ui-view></div>
-      <!-- bower:js-->
-      <script src="../../bower_components/jquery/dist/jquery.js"></script>
-      <script src="../../bower_components/angular/angular.js"></script>
-      <script src="../../bower_components/angular-animate/angular-animate.js"></script>
-      <script src="../../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-      <script src="../../bower_components/angular-resource/angular-resource.js"></script>
-      <script src="../../bower_components/angular-route/angular-route.js"></script>
-      <script src="../../bower_components/bootstrap/dist/js/bootstrap.js"></script>
-      <script src="../../bower_components/toastr/toastr.js"></script>
-      <script src="../../bower_components/ui-router/release/angular-ui-router.js"></script>
-      <script src="../../bower_components/ui-utils/ui-utils.js"></script>
-      <!-- endbower-->
-      <!-- inject:js-->
-      <script src="/src/client/common/common.services.js"></script>
-      <script src="/src/client/common/services/bookResource.js"></script>
-      <script src="/src/client/common/services/bookService.js"></script>
-      <script src="/src/client/app/app.js"></script>
-      <script src="/src/client/app/book/bookAddController.js"></script>
-      <script src="/src/client/app/book/bookDetailController.js"></script>
-      <script src="/src/client/app/book/bookEditController.js"></script>
-      <script src="/src/client/app/book/bookListController.js"></script>
-      <!-- endinject-->
-    </section>
-    <footer>
-      <p class="text-center">Kenrick Wu &copy; 2015</p>
-    </footer>
+    <!-- build:js js/lib.js -->
+    <!-- bower:js-->
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../../bower_components/angular-route/angular-route.js"></script>
+    <script src="../../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../../bower_components/toastr/toastr.js"></script>
+    <script src="../../bower_components/ui-router/release/angular-ui-router.js"></script>
+    <script src="../../bower_components/ui-utils/ui-utils.js"></script>
+    <!-- endbower-->
+    <!-- endbuild -->
+
+    <!-- build:js js/app.js -->
+    <!-- inject:js-->
+    <script src="/src/client/app/core/core.module.js"></script>
+    <script src="/src/client/app/app.js"></script>
+    <script src="/src/client/app/book/bookAddController.js"></script>
+    <script src="/src/client/app/book/bookDetailController.js"></script>
+    <script src="/src/client/app/book/bookEditController.js"></script>
+    <script src="/src/client/app/book/bookListController.js"></script>
+    <script src="/src/client/app/core/routes.js"></script>
+    <script src="/src/client/app/home/home.controller.js"></script>
+    <script src="/src/client/app/layout/nav.controller.js"></script>
+    <script src="/src/client/common/services/bookResource.js"></script>
+    <script src="/src/client/common/services/bookService.js"></script>
+    <script src="/src/client/common/common.services.js"></script>
+    <!-- endinject-->
+    <!-- endbuild -->
   </body>
 </html>

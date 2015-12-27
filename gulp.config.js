@@ -1,22 +1,21 @@
 module.exports = function () {
+
+    var env = process.env.NODE_ENV || "dev",
+        port = process.env.PORT || 3000;
 	
-	var temp = "./.tmp/",
-		build = "./build/",
-		server = "./src/server/",
-		ignore = server + "node_modules/",
-		client = "./src/client/",
+	var root = "./",
+	    src = root + "src/",
+	    temp = root + "tmp/",
+	    dist = root + "dist/",    
+		server = src + "server/",
+		client = src + "/client/",
 		clientApp = client + "app/",
 		css = client + "css/",
-		siteCss = css + "site.css",
-		styles = client + "styles/",
-		stylus = styles + "site.styl",
-		views = server + "views/",
-		layout = views + "includes/layout.jade",
-		jade = views + "index.jade",
-		index = client + "index.html",
+		styles = src + "styles/",
+        images = client + "images/",
 		nodeModules = "./node_modules/",
 		bowerComponents = "./bower_components/",
-		vendor = [nodeModules, bowerComponents];
+		ignore = [nodeModules, bowerComponents];
 
 	var config = {
 		/*
@@ -24,37 +23,32 @@ module.exports = function () {
 		 */
 		port: process.env.PORT || 3000,
 		nodeServer: server + "server.js",
-		build: build,
 		extensions: "js html css jade styl",
-		ignore: vendor,
-		/*
-		 * File paths
-		 */
-		alljs: [
-			clientApp + "**/*.js",
-			server + "*.js",
-			"!" + vendor 
-		],
-		js: [
-			client + "common/**/*.js",
-			clientApp + "**/*.js",
-			"!" + client + "**/*.spec.js"
-		],
+		/* File paths */
+		root: root,
+		src: src,
+		css: css,
+		styles: styles,
 		server: server, 
 		client: client,
+		ignore: ignore,
 		clientApp: clientApp,
+		index: client + "index.html",
+		stylus: styles + "**/*.styl",
+		alljs: [
+			client + "**/*.js",
+			root + "*.js"
+		],
+		js: [
+		    clientApp + "**/*.module.js",
+		    clientApp + "**/*.service.js",
+			clientApp + "**/*.js",
+			client + "**/*.js",
+			"!" + client + "**/*.spec.js"
+		],
 		fonts: bowerComponents + "font-awesome/fonts/**/*.*",
-		images: client + "images/**/*.*",
-		/*
-		 * Stylus and Jade
-		 */
-		css: css,
-		siteCss: siteCss,
-		styles: styles,
-		stylus: stylus,
-		jade: jade,
-		index: index,
-		layout: layout,
+		images: images + "**/*.*",
+		/* Stylus and Jade */
 		/*
 		 * Bower and NPM packages
 		 */

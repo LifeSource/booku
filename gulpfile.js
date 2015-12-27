@@ -2,7 +2,6 @@ var gulp = require("gulp"),
 	del = require("del"),
 	args = require("yargs").argv,
 	wiredep = require("wiredep"),
-	runSequence = require("run-sequence"),
 	browserSync = require("browser-sync");
 
 var $ = require("gulp-load-plugins")({ lazy: true });
@@ -11,10 +10,6 @@ var port = process.env.PORT || 3000;
 
 gulp.task("default", ["build"]);
 gulp.task("help", $.taskListing);
-
-gulp.task("build", function (done) {
-	runSequence("lint", "jade", "dev", done);
-});
 
 // Linting
 gulp.task("lint", function () {
@@ -42,7 +37,7 @@ gulp.task("watch-styles", function () {
 gulp.task("fonts", ["clean-fonts"], function () {
 	log("*** Copying fonts");
 	return gulp.src(config.fonts)
-		.pipe(gulp.dest(config.build + "fonts"));
+		.pipe(gulp.dest(config.dist + "fonts"));
 });
 
 // images
@@ -54,19 +49,19 @@ gulp.task("images", ["clean-images"], function () {
 });
 
 gulp.task("clean", function (done) {
-	var delconfig = [].concat(config.build, config.css);
+	var delconfig = [].concat(config.dist, config.css);
 	log("Cleaning: " +  $.util.colors.blue(delconfig));
 	del(delconfig, done);
 });
 
 gulp.task("clean-fonts", function (done) {
 	log("*** Cleaning out the fonts");
-	clean(config.build + "fonts/**/*.*", done);
+	clean(config.dist + "fonts/**/*.*", done);
 });
 
 gulp.task("clean-images", function (done) {
 	log("*** Cleaning out the images");
-	clean(config.build + "images/**/*.*", done);
+	clean(config.dist + "images/**/*.*", done);
 });
 
 gulp.task("clean-styles", function (done) {
@@ -74,24 +69,8 @@ gulp.task("clean-styles", function (done) {
 	clean(config.css + "**/*.*", done);
 });
 
-// Jade templates
-gulp.task("jade", ["clean-jade"], function () {
-	log("*** Compiling Jade --> HTML");
-	return gulp.src(config.jade)
-		.pipe($.plumber())
-		.pipe($.jade({ 
-			pretty: true 
-		}))
-		.pipe(gulp.dest(config.client));
-});
-
-gulp.task("clean-jade", function (done) {
-	log("*** Cleaning out the html files");
-	clean(config.client + "**/*.html", done);
-});
-
 // Wiring up dependencies
-gulp.task("wiredep", ["jade"], function () {
+gulp.task("wiredep", ["styles"], function () {
 	log("*** Wire up bower css js and custom js");
 
 	var wiredep = require("wiredep").stream;
@@ -103,9 +82,9 @@ gulp.task("wiredep", ["jade"], function () {
 		.pipe(gulp.dest(config.client));
 });
 
-gulp.task("inject", ["wiredep", "styles"], function () {
+gulp.task("inject", ["wiredep"], function () {
 	return gulp.src(config.index)
-		.pipe($.inject(gulp.src(config.siteCss)))
+		.pipe($.inject(gulp.src(config.css + "**/*.css")))
 		.pipe(gulp.dest(config.client));
 });
 
@@ -115,14 +94,23 @@ gulp.task("test", ["lint"], function () {
 });
 
 
-// nodemon
-gulp.task("dev", ["inject"], function () {
+// Serve to production and development environment
+gulp.task("serve-dev", ["inject"], function () {
+    serve(true);
+});
 
-	var isDev = true;
+gulp.task("serve-build", ["optimize"], function () {
+    serve(false);
+});
+
+
+
+
+function serve(isDev) { 
 
 	return $.nodemon({
-		script: config.server + "server.js",
-		ext: config.extensions,
+		script: config.nodeServer,
+		delayTime: 1,
 		env: { 
 			"PORT": config.port,
 			"NODE_ENV" : isDev ? "dev" : "production" 
@@ -148,7 +136,7 @@ gulp.task("dev", ["inject"], function () {
 	.on("exit", function () {
 		log("*** nodemon exited cleanly");
 	});
-});
+}
 
 // --------------------------------------------------------
 // Utility Functions
@@ -175,31 +163,28 @@ function changeEvent(event) {
 	log("File " + event.path.replace(srcPattern, "") + " " + event.type);
 }
 
-function startBrowserSync() {
+function startBrowserSync(isDev) {
 	if (args.nosync || browserSync.active) {
 		return;
 	}
 	
-	log("Starting browser-sync on port " + port);
+	log("Starting browser-sync on port " + config.port);
 
-	gulp.watch(config.styles + "**/*.styl", ["styles"])
-		.on("change", function (event) {
-			changeEvent(event);
-		});
+    if (isDev) {
+        gulp.watch(config.styles + "**/*.styl", ["styles"])
+            .on("change", function (event) { changeEvent(event); });
+    } else {
+
+    }
 
 	var options = {
-		proxy: "localhost:" + port,
+		proxy: "localhost:" + config.port,
 		port: 8000,
 		files: [
-			config.client + "**/*.*", 
-			config.client + "**/*.jade",
-			config.views + "**/*.*",
-			"!" + config.stylus,
-			config.css + "**/*.css"
+			config.client + "**/*.*" 
 		],
 		ghostMode: {
 			clicks: true,
-			location: false,
 			forms: true,
 			scroll: true
 		},

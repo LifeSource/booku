@@ -1,4 +1,4 @@
-# Booku
+# Bookuu
 
 Booku is a web application built with the MEAN stack using open source tools. The aim of this project was for me to hone all the web development skills and techinique I've learnt from video training, blogs and other sources and build an entire end-to-end web application from the front-end to the back-end persisting data in an actual database.
 

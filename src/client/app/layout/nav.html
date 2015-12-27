@@ -1,0 +1,29 @@
+<header class="navbar-brand" data-ng-controller="NavController as vm">
+  <div id="menu" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+      <div id="logo">
+        <button data-toggle="collapse" data-target=".navbar-collapse" class="btn btn-success navbar-toggle">
+            <span class="glyphicon glyphicon-list"></span>
+        </button>
+        <a ui-sref="home"><h1>Booku</h1></a>
+      </div>
+    </div>
+    <div id="logoIcons" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+          <li class="nav" data-ng-repeat="nav in vm.navs">
+              <a ui-sref="{{nav.state}}">{{ nav.name }}</a>
+          </li>
+        <!--<li class="nav"><a ui-sref="home">Home</a></li>-->
+        <!--<li class="nav"><a ui-sref="bookList">Book List</a></li>-->
+        <!--<li class="nav"> <a ui-sref="about">Kenrick Wu</a></li>-->
+ <!--       <li class="nav"><a href="http://www.gulpjs.com" target="_blank"><img src="/images/gulp-tiny.png"></a></li>-->
+        <!--<li class="nav"><a href="http://www.angularjs.org" target="_blank"><img src="/images/mongodb.png" target="blank"></a></li>-->
+        <!--<li class="nav"><a href="http://www.expressjs.com" target="_blank"><img src="/images/expressjs.png"></a></li>-->
+        <!--<li class="nav"><a href="http://www.angularjs.org" target="_blank"><img src="/images/angularjs-small.png" target="blank"></a></li>-->
+        <!--<li class="nav"><a href="http://www.nodejs.org" target="_blank"><img src="/images/nodejs.png"></a></li>-->
+      </ul>
+    </div>
+  </div>
+</header>
+
+
