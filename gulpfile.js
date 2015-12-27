@@ -103,9 +103,6 @@ gulp.task("serve-build", ["optimize"], function () {
     serve(false);
 });
 
-
-
-
 function serve(isDev) { 
 
 	return $.nodemon({
@@ -128,7 +125,7 @@ function serve(isDev) {
 	})
 	.on("start", function () {
 		log("*** nodemon started.");
-		startBrowserSync();
+		startBrowserSync(isDev);
 	})
 	.on("crash", function () {
 		log("*** nodemon crashed: script crashed for some reason");
@@ -164,6 +161,7 @@ function changeEvent(event) {
 }
 
 function startBrowserSync(isDev) {
+
 	if (args.nosync || browserSync.active) {
 		return;
 	}
@@ -171,7 +169,7 @@ function startBrowserSync(isDev) {
 	log("Starting browser-sync on port " + config.port);
 
     if (isDev) {
-        gulp.watch(config.styles + "**/*.styl", ["styles"])
+        gulp.watch(config.stylus, ["styles"])
             .on("change", function (event) { changeEvent(event); });
     } else {
 
@@ -180,9 +178,10 @@ function startBrowserSync(isDev) {
 	var options = {
 		proxy: "localhost:" + config.port,
 		port: 8000,
-		files: [
-			config.client + "**/*.*" 
-		],
+		files: isDev ? [
+			config.client + "**/*.*",
+			config.css + "**/*.css"
+		] : [],
 		ghostMode: {
 			clicks: true,
 			forms: true,
@@ -193,7 +192,7 @@ function startBrowserSync(isDev) {
 		logLevel: "debug",
 		logPrefix: "gulp-patterns",
 		notify: true,
-		reloadDelay: 1000 
+		reloadDelay: 1
 	};
 
 	browserSync(options);

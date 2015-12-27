@@ -20,7 +20,6 @@
         };
 
         function onComplete(response) {
-            console.log("response: ", response);
             return response.data;
         }
 
@@ -57,6 +56,5 @@
             .then(onComplete)
             .catch(onError);
         } 
-
     }
 })();

@@ -19,6 +19,7 @@ var bookSchema = new Schema({
 	publisher: String, 
 	publishedDate: Date,
 	price: { type: Number, min: 0 },
+	imageUrl: { type: String, default: "default.jepg" },
 	summary: String
 });
 

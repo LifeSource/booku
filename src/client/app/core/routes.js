@@ -1,5 +1,5 @@
 (function () {
-    "use strict";
+
 
     angular
         .module("app.core")
@@ -29,7 +29,7 @@
                 templateUrl: "app/book/bookList.html",
                 controller: "BookListController",
                 controllerAs: "vm"
-            });
+            })
 			//.state("bookAdd", {
 				//url: "/books/add/",
 				//templateUrl: "/partials/book/bookAddView.jade",
@@ -45,11 +45,12 @@
 				//url: "/info",
 				//templateUrl: "/partials/book/bookEditInfoView.jade"
 			//})
-			//.state("bookDetail", {
-				//url: "/books/:bookId",
-				//templateUrl: "/partials/book/bookDetailView.jade",
-				//[>cont<]roller: "BookDetailController as vm"
-			//});
-	}
+            .state("bookDetail", {
+                url: "/books/:id",
+                templateUrl: "app/book/bookDetail.html",
+                controller: "BookDetailController",
+                controllerAs: "vm"
+            });
+    }
 
 })();

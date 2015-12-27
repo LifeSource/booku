@@ -13,13 +13,14 @@ var config = {
     index: "./src/client/index.html"
 };
 
+// database configuration and setup
+var dbConfig = require("./config/configuration");
+require("./config/mongoose")(dbConfig);
+
 // Body Parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// database configuration and setup
-var dbConfig = require("./config/configuration");
-require("./config/mongoose")(dbConfig);
 
 // API routes
 var Book = require("./models/book");

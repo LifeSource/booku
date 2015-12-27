@@ -6,14 +6,11 @@
                     <div class="tile-icon"> 
                         <i class="glyphicon glyphicon-{{ item.icon }}"></i>
                     </div>
-                    <div>
-                        <span class="bold">{{ item.name }}</span>
-                    </div>
+                    <div> <span class="bold">{{ item.name }}</span> </div>
                 </a>
             </li>
         </ul>
     </div>
-
 
     <div class="row">
         <hr>
@@ -53,7 +50,7 @@
              <tbody>
                  <tr data-ng-repeat="book in vm.books | orderBy: vm.sortOption | filter: vm.searchTerm:strict">
                      <td>
-                        <a ui-sref="bookDetail({ bookId: book._id })">
+                        <a ui-sref="bookDetail({ id: book._id })">
                             <span>{{ book.title }}</span>
                         </a>
                      </td>

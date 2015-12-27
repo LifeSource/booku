@@ -1,8 +1,14 @@
-(function (app) {
+(function () {
 
 	"use strict";
 
-	var BookDetailController = function (bookService, $stateParams, $state) {
+	angular
+	    .module("book.module")
+	    .controller("BookDetailController", BookDetailController);
+
+    BookDetailController.$inject = ["$q", "$stateParams", "$state", "bookService"];
+
+	function BookDetailController ($q, $stateParams, $state, bookService) {
 
 		var vm = this;
 
@@ -24,17 +30,23 @@
 				});
 		};
 
-		var onComplete = function (data) {
-			vm.book = data;
-		};
+		activate();
 
-		var onError = function (err) {
-			toastr.err("Unable to fetch data: " + err);
-		};
+		function activate() {
+		    getBook($stateParams.id);
+		}
 
-		bookService.get($stateParams.bookId).then(onComplete, onError);
-	};
+		function getBook(id) {
+		    return bookService.get(id)
+		        .then(onComplete)
+		        .catch(onError);
+		}
 
-	app.controller("BookDetailController", ["bookService", "$stateParams", "$state", BookDetailController]);
+        function onComplete(data) { 
+            vm.book = data;
+            return data;
+        }
+		function onError(reason) { toastr.err("Unable to fetch data: " + reason); }
+	}
 	
-}(angular.module("booku")));
+})();

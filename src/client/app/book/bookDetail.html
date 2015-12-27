@@ -1,0 +1,17 @@
+<div id="bookDetail">
+
+    <div class="bookImage">
+        <img ng-src="/images/books/{{ vm.book.imageUrl }}" alt="{{ vm.book.title }} image" />
+    </div>
+    <div class="bookInfo">
+        <div> {{ vm.book.publisher}} </div>
+        <div> {{ vm.book.publishedDate | date }} </div>
+        <div> {{ vm.book.genre}} </div>
+    </div>
+    <div class="bookSummary">
+        <div> {{ vm.book.title }} </div>
+        <div>
+            {{ vm.book.summary }}
+        </div>
+    </div>
+<div>
