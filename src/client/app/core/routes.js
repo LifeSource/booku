@@ -9,6 +9,8 @@
 
     function routes($stateProvider, $urlRouterProvider, $locationProvider) {
 
+        $locationProvider.html5Mode(true).hashPrefix("!");
+
 		$urlRouterProvider.otherwise("/");
 
 		$stateProvider
@@ -21,12 +23,13 @@
 			.state("about", {
 				url: "/about",
 				templateUrl: "app/home/about.html"
-			});
-	   /*     .state("bookList", {*/
-				//url: "/books",
-				//templateUrl: "/partials/book/bookListView.jade",
-				//controller: "BookListController as vm"	
-			//})
+			})
+            .state("bookList", {
+                url: "/books",
+                templateUrl: "app/book/bookList.html",
+                controller: "BookListController",
+                controllerAs: "vm"
+            });
 			//.state("bookAdd", {
 				//url: "/books/add/",
 				//templateUrl: "/partials/book/bookAddView.jade",

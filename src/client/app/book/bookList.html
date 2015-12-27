@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row">
+        <ul id="dashboard">
+            <li class="tile tile-{{ item.className }}" data-ng-repeat="item in vm.dashboardList">
+                <a ui-sref="{{ item.state }}">
+                    <div class="tile-icon"> 
+                        <i class="glyphicon glyphicon-{{ item.icon }}"></i>
+                    </div>
+                    <div>
+                        <span class="bold">{{ item.name }}</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="row">
+        <hr>
+
+        <div class="form-group">
+            <div class="col-md-1">
+                <label class="control-label" for="sortOption">Order by:</label>
+            </div>
+            <div class="col-md-2">
+                <select id="sortOption" class="form-control" name="sortOption" data-ng-model="vm.sortOption">
+                    <option data-ng-repeat="option in vm.options">{{ option }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-1">
+                <label class="control-label" for="">Search:</label>
+            </div>
+            <div class="col-md-6">
+                <input id="searchFilter" type="text" placeholder="Search for a book by entering its title here ..." data-ng-model="vm.searchTerm.title" class="form-control">
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-primary" data-ng-click="vm.clearSearch()">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <hr />
+        <table class="table table-striped table-bordered">
+             <thead>
+                 <tr>
+                     <th data-ng-repeat="heading in vm.options">{{ heading }}</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr data-ng-repeat="book in vm.books | orderBy: vm.sortOption | filter: vm.searchTerm:strict">
+                     <td>
+                        <a ui-sref="bookDetail({ bookId: book._id })">
+                            <span>{{ book.title }}</span>
+                        </a>
+                     </td>
+                     <td>{{ book.author }}</td>
+                     <td>{{ book.genre }}</td>
+                     <td>{{ book.publisher }}</td>
+                     <td>{{ book.publishedDate | date }}</td>
+                     <td>{{ book.price | currency }}</td>
+                 </tr>
+             </tbody>
+        </table>
+    
+    </div>
+</div>

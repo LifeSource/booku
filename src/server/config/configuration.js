@@ -6,12 +6,12 @@ module.exports = {
     development: {
         port: process.env.PORT || 3000,
         rootPath: rootPath,
-        db: "mongodb://localhost:27017/booku"
+        db: "mongodb://localhost:27017/bookuu"
     },
     production: {
         port: process.env.PORT || 80,
         rootPath: rootPath,
-        db: "mongodb://booku:#hyegyo86kW@ds031581.mongolab.com:31581/booku"
+        db: "mongodb://bookuu:#hyegyo86kW@ds031581.mongolab.com:31581/bookuu"
     }
 
 };

@@ -3,8 +3,19 @@ var Book = require("../models/book");
 var seedData = require("../models/seedData");
 
 module.exports = function(config) {
+    
 
-	mongoose.connect(config.db);
+    var env = process.env.NODE_ENV || "dev";
+
+    switch (env) {
+        case 'production':
+            mongoose.connect(config.production.db);
+            break;
+        default:
+            mongoose.connect(config.development.db);
+            break;
+    }
+
 	var database = mongoose.connection;
 
 	Book.find({}).exec(function (err, books) {

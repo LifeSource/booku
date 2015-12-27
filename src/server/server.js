@@ -1,4 +1,5 @@
 var express = require("express"),
+    mongoose = require("mongoose"),
     bodyParser = require("body-parser");
 
 app = express();
@@ -12,8 +13,18 @@ var config = {
     index: "./src/client/index.html"
 };
 
+// Body Parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// database configuration and setup
+var dbConfig = require("./config/configuration");
+require("./config/mongoose")(dbConfig);
+
+// API routes
+var Book = require("./models/book");
+var bookRouter = require("./routes/bookRoutes")(Book);
+app.use("/api/books", bookRouter);
 
 switch (config.env) {
     case "production":
@@ -26,11 +37,7 @@ switch (config.env) {
         app.use("/*", express.static(config.index));
         break;
 }
-// routing
-//require("./config/routes")(app);
 
-// database configuration and setup
-//require("./config/mongoose")(config);
 
 app.listen(config.port, function () {
 	console.log("Listening on port: " + config.port);

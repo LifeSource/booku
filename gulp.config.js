@@ -13,8 +13,8 @@ module.exports = function () {
 		css = client + "css/",
 		styles = src + "styles/",
         images = client + "images/",
-		nodeModules = "./node_modules/",
-		bowerComponents = "./bower_components/",
+		nodeModules = root + "node_modules/",
+		bowerComponents = root + "bower_components/",
 		ignore = [nodeModules, bowerComponents];
 
 	var config = {
@@ -55,7 +55,7 @@ module.exports = function () {
 		bower: {
 			json: "./bower.json",
 			directory: bowerComponents,
-			ignore: "../.."
+			ignorePath: "../.."
 		},
 		bowserReloadDelay: 1000,
 		/*
@@ -69,7 +69,7 @@ module.exports = function () {
 		var options = {
 			json: config.bower.json,
 			directory: config.bower.directory,
-			ignore: config.bower.ignore
+			ignorePath: config.bower.ignorePath
 		};
 	};
 

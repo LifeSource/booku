@@ -73,8 +73,8 @@ gulp.task("clean-styles", function (done) {
 gulp.task("wiredep", ["styles"], function () {
 	log("*** Wire up bower css js and custom js");
 
-	var wiredep = require("wiredep").stream;
-	var options = config.getWiredepDefaultOptions();
+	var wiredep = require("wiredep").stream,
+        options = config.getWiredepDefaultOptions();
 
 	return gulp.src(config.index)
 		.pipe(wiredep(options))
