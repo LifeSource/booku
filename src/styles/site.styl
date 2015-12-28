@@ -9,184 +9,57 @@ redder = #c12919
 coolOrange = #fbe685
 gunmetal = #626257
 
-body
-	padding 0px
-	margin-top 65px	
+html, body, img, video, footer, #container {
+    width 100%
+    max-width 100%
+}
 
-h1, h2, h3, h4, h5, h6
-	font-weight normal
-	
-h1
-	margin 0px
-	
-#logo a, 
-#logo a:visited, 
-#logo a:hover,
-#logo a:active
+h1, h2, h3, h4, h5, h6, ul, body {
+    margin 0
+    padding 0
+}
 
+ul
+    list-style none
+
+a, a:link, a:visited, a:hover, a:active {
 	color #ccc
-a,
-a:link,
-a:visited, 
-a:active
 	text-decoration none
+}
 
-// ---------------------------------------------------------------------
-// Header Section
-// ---------------------------------------------------------------------
+#container {
+    display flex
+    flex-flow column wrap
+    justify-content center
+}
 
-.navbar
-	background  coolBlack
+header {
+    display flex
+    justify-content center
+    height 120px
+    background gunmetal
 
-#logo
-	margin-top 5px
-	margin-left 30px
+    img {
+        width 45px
+        height 35px
+    }
 
-#logoIcons img
-	height 20px
+    ul {
+        display flex
+        justify-content space-between
+        font-size 1.5em
 
-// ---------------------------------------------------------------------
-// Main content
-// ---------------------------------------------------------------------
+        li:nth-child(1n+2) {
+            margin-left 20px
+        }
+    }
 
-.table thead th
-	color #fff
-	background-color gunmetal
-
-#meanList li
-	float left
-	list-style none
-	font-family courier
-
-#meanList li:hover
-	background #fff
-	transition background 1.0s ease
-
-#meanList div
-	margin-top 50px
-
-.tech 
-	width 300px
-	height 200px
-	margin 10px
-	border-radius 8px
-
-#mongo
-	background #fbe685
-
-#node
-	background #06e225
-
-#express
-	background #f5f758
-
-#angular
-	background #58aaf7
-
-#gulp
-	background #b54e3a
-
-#git
-	background #a8bfbb
-
-.jumbotron
-	padding 50px
+    div:first-child, nav {
+        margin auto
+    }
+}
 
 footer
-	clear both
-
-// ---------------------------------------------------------------------
-// Dashboard and tiles
-// ---------------------------------------------------------------------
-
-#dashboard
-	list-style none
-
-.tile
-	float left
-	height 120px
-	width 150px
-	padding 20px 0
-	margin 20px 20px
-	border-radius 10px
-
-.tile-author
-	background-color brightOrange 
-
-.tile-book
-	background-color bluey
-
-.tile-add
-	background niceGreen
-
-#dashboard li:hover
-	background coolBlack 
-	transition background 0.5s ease
-
-.tile span 
-	color #fff 
-	font-size 30px
-
-.glyphicon.glyphicon-home,
-.glyphicon.glyphicon-book,
-.glyphicon.glyphicon-education,
-.glyphicon.glyphicon-plus
-	color white
-	font-size 51px
-
-#bookCounter
-	color #fff
-	valgin top
-	margin-left 20px
-	font-size 51px
-
-.tile
-	padding 10px 0 0 10px
-	
-.tile-icon
-	margin-right 20px
-	float right
-
-// ------------------------------------------
-// Forms
-// ------------------------------------------
-
-form
-	background-color #a4c8e8
-	border-radius 2px
-	box-shadow 0 1px 1px #ccc
-	color #404040
-	font-size 16px
-	padding 30px 20px
-
-form legend
-	color #404040
-	font-size 42px
-	font-family "cookie", courier, cursive
-	font-weight normal
-	line-height 1
-	text-shadow 0 3px 0 rgba(0, 0, 0, 0.1);
-
-.wizard a
-	background #efefef
-	display inline-block
-	margin-right 5px
-	min-width 150px
-	outline none
-	padding 10px 40px 10px
-	position relative
-	text-decoration none
-
-.wizard .active
-	background #007acc
-	color #fff
-
-.panel-footer button
-	width 80px
-	margin-right 10px
-	
-#saveButton
-	//width 80px
-	//margin-right 10px 
-//#cancelButton
-    //width 70px
+	position fixed
+	height 100px
+	background gunmetal

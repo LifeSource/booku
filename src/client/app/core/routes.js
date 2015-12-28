@@ -1,5 +1,6 @@
 (function () {
 
+    "use strict";
 
     angular
         .module("app.core")
@@ -30,21 +31,23 @@
                 controller: "BookListController",
                 controllerAs: "vm"
             })
-			//.state("bookAdd", {
-				//url: "/books/add/",
-				//templateUrl: "/partials/book/bookAddView.jade",
-				//controller: "BookAddController as vm"
-			//})
-			//.state("bookEdit", {
-				//abstract: true,
-				//url: "/books/edit/:bookId",
-				//templateUrl: "/partials/book/bookEditView.jade",
-				//controller: "BookEditController as vm"
-			//})
-			//.state("bookEdit.info", {
-				//url: "/info",
-				//templateUrl: "/partials/book/bookEditInfoView.jade"
-			//})
+            .state("bookAdd", {
+                url: "/books/add/",
+                templateUrl: "app/book/bookAdd.html",
+                controller: "BookAddController",
+                controllerAs: "vm"
+            })
+            .state("bookEdit", {
+                abstract: true,
+                url: "/books/edit/:bookId",
+                templateUrl: "app/book/bookEdit.html",
+                controller: "BookEditController",
+                controllerAs: "vm"
+            })
+            .state("bookEdit.info", {
+                url: "/info",
+                templateUrl: "app/book/bookEditInfo.html"
+            })
             .state("bookDetail", {
                 url: "/books/:id",
                 templateUrl: "app/book/bookDetail.html",

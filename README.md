@@ -2,7 +2,7 @@
 
 Booku is a web application built with the MEAN stack using open source tools. The aim of this project was for me to hone all the web development skills and techinique I've learnt from video training, blogs and other sources and build an entire end-to-end web application from the front-end to the back-end persisting data in an actual database.
 
-# Installation
+### Installation
 
 The following should be done in the terminal, please note I have setup MongoDB to run as a services/dameon on my Mac when the computer starts up, you may need to run MongoDB manually for your environment:
 
@@ -11,7 +11,7 @@ The following should be done in the terminal, please note I have setup MongoDB t
     3. bower install
     4. execute gulp
 
-# Operation System 
+### Operation System 
 MAC OSX Yosemite
 
 # Editor/IDE

@@ -13,12 +13,12 @@
         vm.year = new Date().getFullYear();
 
         vm.meanList = [
-            { id: "mongo", name: "MongoDB", type: "Database" },
-            { id: "express", name: "ExpressJS", type: "Web Framework" },
-            { id: "angular", name: "AngularJS", type: "Client Framework" },
-            { id: "node", name: "NodeJS", type: "Server" },
-            { id: "gulp", name: "GulpJS", type: "Build Automation" },
-            { id: "git", name: "Git", type: "Source Control" }
+            { id: "mongo", name: "MongoDB", type: "Database", href: "http://www.mongodb.org" },
+            { id: "express", name: "ExpressJS", type: "Web Framework", href: "http://www.expressjs.org" },
+            { id: "angular", name: "AngularJS", type: "Client Framework", href: "http://www.angularjs.org" },
+            { id: "node", name: "NodeJS", type: "Server", href: "http://www.nodejs.org" },
+            { id: "gulp", name: "GulpJS", type: "Build Automation", href: "http://www.gulpjs.org"},
+            { id: "git", name: "Git", type: "Source Control", href: "http://www.git.org" }
         ];
     }
 

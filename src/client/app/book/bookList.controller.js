@@ -15,7 +15,7 @@
             vm.dashboardList = [
                 { className: "author",  name: "About Me", state: "about", icon: "education" },
                 { className: "book", name: "Collection", state: "bookList", icon: "book" },
-                { className: "add", name: "", state: "addBook", icon: "plus" }
+                { className: "add", name: "", state: "bookAdd", icon: "plus" }
             ];
             
             vm.options = [ "title", "author", "genre", "publisher", "price", "date" ];

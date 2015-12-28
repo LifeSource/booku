@@ -6,19 +6,20 @@
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <!-- build:css styles/lib.css -->
     <!-- bower:css-->
-    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="../../bower_components/toastr/toastr.css" />
     <!-- endbower-->
     <!-- endbuild -->
     <!-- build:css styles/app.css -->
     <!-- inject:css-->
     <link rel="stylesheet" href="/src/client/css/bookDetail.css">
+    <link rel="stylesheet" href="/src/client/css/bookList.css">
+    <link rel="stylesheet" href="/src/client/css/home.css">
     <link rel="stylesheet" href="/src/client/css/site.css">
     <!-- endinject-->
     <!-- endbuild -->
   </head>
   <body>
-      <div> 
+      <div id="container" data-ng-controller="HomeController as vm"> 
       <!--<div data-ng-controller="HomeController as vm">-->
           <div data-ng-include="'app/layout/nav.html'"></div>
           <section class="main">
@@ -31,7 +32,6 @@
     <!-- build:js js/lib.js -->
     <!-- bower:js-->
     <script src="../../bower_components/jquery/dist/jquery.js"></script>
-    <script src="../../bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../../bower_components/angular/angular.js"></script>
     <script src="../../bower_components/angular-resource/angular-resource.js"></script>
     <script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
