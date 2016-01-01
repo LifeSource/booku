@@ -26,7 +26,7 @@ var seedData = {
             publisher: "Syncfusion Inc",
             publishedDate: new Date("May 1, 2012"),
             price: 0.0,
-            imageUrl: "default.jpeg",
+            imageUrl: "httpsuccintly.png",
             summary: "Legendary software extraodinaire Scott Allen, dissect the HTTP protocol in a simple and easy to digest manner to allow novice developers to get a better understanding of how HTTP works on the web to deliver fascinating web sites to our browsers."
         }, {
             title: "Clean Code: A Handbook of Agile Software Craftsmanship",
@@ -43,7 +43,7 @@ var seedData = {
             genre: "Spiritual",
             publisher: "Hachette Australia",
             price: 23.55,
-            imageUrl: "default.jpeg",
+            imageUrl: "openingthedoortoyourheart.png",
             summary: ""
         }
     ]

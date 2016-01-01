@@ -6,13 +6,13 @@
             .module("book.module")
             .controller("BookListController", BookListController);
 
-        BookListController.inject = ["$q", "bookService"];
+        BookListController.inject = ["$q", "$state", "bookService"];
 
-        function BookListController($q, bookService) {
+        function BookListController($q, $state, bookService) {
 
             var vm = this;
 
-            vm.clearSearch = function() { vm.searchTerm = ""; };
+            vm.showBookDetail = showBookDetail;
 
             activate();
 
@@ -38,6 +38,11 @@
 
             function onError(err) {
                 toastr.error("Unable to fetch the data: " + err);
+            }
+
+
+            function showBookDetail(bookId) {
+               $state.go("bookDetail", { id: bookId }); 
             }
         }
 

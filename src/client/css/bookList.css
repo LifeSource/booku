@@ -10,13 +10,14 @@
   list-style: none;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
 }
 #bookList ul li {
   margin-right: 30px;
   box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
 }
 #bookList ul li:hover {
-  opacity: 0.5;
-  color: #ff0;
-  transition: background 0.8s ease;
+  position: relative;
+  transform: scalex(2) scaley(2);
+  transition: all 0.5s ease;
 }

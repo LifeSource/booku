@@ -68,5 +68,10 @@ body {
   font-family: "Roboto", sans-serif;
 }
 footer {
-  text-align: center;
+  padding: 3%;
+  display: flex;
+  color: #eee;
+  background: #626257;
+  justify-content: space-between;
+  justify-tems: justify;
 }
