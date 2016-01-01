@@ -1,9 +1,7 @@
 html,
 body,
 img,
-video,
-footer,
-#container {
+video {
   width: 100%;
   max-width: 100%;
 }
@@ -14,50 +12,61 @@ h4,
 h5,
 h6,
 ul,
-body {
+body,
+header {
   margin: 0;
   padding: 0;
-}
-ul {
-  list-style: none;
 }
 a,
 a:link,
 a:visited,
 a:hover,
 a:active {
-  color: #ccc;
+  color: #eee;
   text-decoration: none;
 }
 #container {
   display: flex;
   flex-flow: column wrap;
-  justify-content: center;
 }
 header {
-  display: flex;
-  justify-content: center;
   height: 120px;
+  color: #eee;
   background: #626257;
-}
-header img {
-  width: 45px;
-  height: 35px;
-}
-header ul {
+  font-family: "Lato", sans-serif;
   display: flex;
-  justify-content: space-between;
-  font-size: 1.5em;
 }
-header ul li:nth-child(1n+2) {
-  margin-left: 20px;
+header .main-title {
+  display: flex;
+  margin-right: 20px;
 }
-header div:first-child,
+header .main-title h1 {
+  font-size: 2em;
+}
 header nav {
   margin: auto;
+  display: flex;
+  justify-content: center;
+}
+header nav h1,
+header nav ul {
+  margin: auto;
+}
+header nav ul {
+  font-size: 1.5em;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+}
+header nav ul li {
+  margin: 0 10px;
+}
+.fa-book {
+  font-size: 5.5em;
+}
+body {
+  font-family: "Roboto", sans-serif;
 }
 footer {
-  position: fixed;
-  height: 100px;
-  background: #626257;
+  text-align: center;
 }

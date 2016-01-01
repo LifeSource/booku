@@ -8,7 +8,7 @@ var $ = require("gulp-load-plugins")({ lazy: true });
 var config = require("./gulp.config")();
 var port = process.env.PORT || 3000;
 
-gulp.task("default", ["build"]);
+gulp.task("default", ["help"]);
 gulp.task("help", $.taskListing);
 
 // Linting
@@ -93,8 +93,9 @@ gulp.task("test", ["lint"], function () {
 	startTest(true, done);
 });
 
-
 // Serve to production and development environment
+gulp.task("serve", ["serve-dev"]);
+
 gulp.task("serve-dev", ["inject"], function () {
     serve(true);
 });

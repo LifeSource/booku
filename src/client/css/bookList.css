@@ -1,17 +1,22 @@
 #bookList {
+  padding: 5%;
+}
+#bookList img {
+  width: 123px;
+  height: 152px;
+  display: block;
+}
+#bookList ul {
+  list-style: none;
   display: flex;
   flex-flow: row wrap;
 }
-#bookList img {
-  width: 256px;
-  height: 325px;
-  display: block;
+#bookList ul li {
+  margin-right: 30px;
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
 }
-.bookContainer {
-  padding: 5px;
-  width: 286px;
-}
-.priceTag {
-  text-align: center;
-  height: 50px;
+#bookList ul li:hover {
+  opacity: 0.5;
+  color: #ff0;
+  transition: background 0.8s ease;
 }

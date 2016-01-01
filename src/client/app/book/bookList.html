@@ -1,14 +1,15 @@
 <div id="bookList">
 
+    <div class="">
+        
+    </div>
+    
     <div>
         <ul>
-            <li data-ng-repeat="book in vm.books">
+            <li data-ng-repeat="book in vm.books" data-ng-click="showBookDetail(book)">
                 <div class="bookContainer">
                     <img ng-src="/images/books/{{ book.imageUrl }}" alt="{{ book.title }} image">
 
-                    <div class="priceTag">
-                        {{ book.price | currency }}
-                    </div>
                 </div>
             </li>
         </ul>

@@ -1,5 +1,6 @@
 (function () {
 
+    "use strict";
 
     angular
         .module("app.core")
@@ -11,11 +12,9 @@
         var vm = this;
        
         vm.navs = [
-
             { name: "Home", state: "home" },
             { name: "Book List", state: "bookList" },
-            { name: "Kenrick Wu", state: "about" }
-
+            { name: "About", state: "about" }
         ];
     }
 

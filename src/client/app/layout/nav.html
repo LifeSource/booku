@@ -1,39 +1,14 @@
-<header class="navbar-brand" data-ng-controller="NavController as vm">
-    <div>
-        <a ui-sref="home">
-            <h1>Booku</h1>
-        </a>
-    </div>
+<header data-ng-controller="NavController as vm">
     <nav>
+        <div class="main-title">
+            <i class="fa fa-book"></i>
+            <h1>Booku</h1>
+        </div>
+
         <ul>
             <li class="nav" data-ng-repeat="nav in vm.navs">
                 <a ui-sref="{{nav.state}}">{{ nav.name }}</a>
             </li>
-         <!--   <li>-->
-                <!--<a href="http://www.gulpjs.com" target="_blank">-->
-                    <!--<img src="/images/gulp-tiny.png">-->
-                <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<a href="http://www.angularjs.org" target="_blank">-->
-                    <!--<img src="/images/mongodb.png" target="blank">-->
-                <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<a href="http://www.expressjs.com" target="_blank">-->
-                    <!--<img src="/images/expressjs.png">-->
-                <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<a href="http://www.angularjs.org" target="_blank">-->
-                    <!--<img src="/images/angularjs-small.png" target="blank">-->
-                <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<a href="http://www.nodejs.org" target="_blank">-->
-                    <!--<img src="/images/nodejs.png">-->
-                <!--</a>-->
-            <!--</li>-->
         </ul>
     </nav>
 </header>
