@@ -41,12 +41,12 @@ var seedData = {
             reviewDate: new Date("July 13, 2014"),
             comments: "The legendary Jon Skeet, digs into the C# language like no other, if you want to know the ins and outs of this great language then you need to pick up this book. I've only read through half of the book and my mind was already blown."
         }, {
-            reviewer: "Jenny Simpson",
+            reviewer: "Karl Madison",
             rating: 4,
             reviewDate: new Date("Jan 25, 2015"),
             comments: "I thought I knew C# pretty well after working with it for over 5 years in the field but I still have a way to go after read this book."
         }, {
-            reviewer: "Jenny Simpson",
+            reviewer: "Roger Mills",
             rating: 2,
             reviewDate: new Date("Jun 25, 2014"),
             comments: "Not a good book for beginners and the examples aren't complete just snippets."

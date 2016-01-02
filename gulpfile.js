@@ -101,7 +101,7 @@ gulp.task("templatecache", function () {
 
 });
 
-gulp.task("optimize", ["inject", "images"], function () {
+gulp.task("optimize", ["inject", "images", "fonts"], function () {
 
     log("Optimizing html, css and javascript files for production.");
 
