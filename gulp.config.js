@@ -48,7 +48,11 @@ module.exports = function () {
 			client + "**/*.js",
 			"!" + client + "**/*.spec.js"
 		],
-		fonts: bowerComponents + "font-awesome/fonts/**/*.*",
+		fonts: [
+		    bowerComponents + "font-awesome/fonts/**/*.*",
+		    bowerComponents + "bootstrap/fonts/**/*.*",
+		    
+        ],
 		images: images + "**/*.*",
         htmlTemplates: clientApp + "**/*.html",
 		/* Stylus and Jade */
