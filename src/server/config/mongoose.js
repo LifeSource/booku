@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var Book = require("../models/book");
+var Book = require("../models/book/book.model");
 var seedData = require("../models/seedData");
 
 module.exports = function(config) {

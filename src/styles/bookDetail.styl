@@ -1,34 +1,36 @@
 #bookDetail 
-    box-sizing border-box
-    display flex
-    div
-        max-width 100%
-
-.bookInfo
     display flex
 
-.bookSummary
-    font-size 1.2em
+    .bookImage, .bookInfo, .reviews
+        margin 50px 0
+        padding 0 50px
 
-    div:first-child
+    .bookImage
+        width 25%
+    .bookInfo
+        width 60%
+
+    
+    img
+        width  225px
+        height 260px
+        display block
+        box-shadow 2px 2px 2px 2px rgba(0, 0, 0, 0.2)
+
+    .comments
+        font-style italic
+
+    .author-heading
         padding 15px
-        margin-bottom 15px
-        font-size 1.5em
-        background #1c7eab
+        background #c3bd98
 
-.bookInfo
-    font-size 1.5em
+    ul
+        li
+            display flex
+            flex-flow column wrap
+            margin-bottom 10px
+.rating 
+    color #eccb15
+
+.reviewList
     display flex
-    flex-flow column wrap
-
-    div
-        text-align center
-
-    div:first-child
-        padding 55px
-    div:nth-child(2n)
-        padding 15px
-        background-color #e8fff5
-    div:last-child
-        padding 15px
-        background-color #ffdd7f

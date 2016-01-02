@@ -1,14 +1,10 @@
 <div id="bookList">
 
-    <div>
-        <ul>
-            <li data-ng-repeat="book in vm.books" data-ng-click="vm.showBookDetail(book._id)">
-                <div class="bookContainer">
-                    <img ng-src="/images/books/{{ book.imageUrl }}" alt="{{ book.title }} image">
-
-                </div>
-            </li>
-        </ul>
-    </div>
+    <ul> 
+        <li data-ng-repeat="book in vm.books" data-ng-click="vm.showBookDetail(book._id)">
+            <img ng-src="/images/books/{{ book.imageUrl }}" alt="{{ book.title }} image">
+        </li>
+       
+    </ul>
 
 </div>

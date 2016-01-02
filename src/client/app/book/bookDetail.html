@@ -3,15 +3,27 @@
     <div class="bookImage">
         <img ng-src="/images/books/{{ vm.book.imageUrl }}" alt="{{ vm.book.title }} image" />
     </div>
+
     <div class="bookInfo">
-        <div> {{ vm.book.publisher}} </div>
+        <div class="author-heading"> {{ vm.book.author }} </div>
+        <div> {{ vm.book.publisher }} </div>
         <div> {{ vm.book.publishedDate | date }} </div>
-        <div> {{ vm.book.genre}} </div>
+        <br />
+        <h3>Summary</h3> {{ vm.book.summary }}
     </div>
-    <div class="bookSummary">
-        <div> {{ vm.book.title }} </div>
-        <div>
-            {{ vm.book.summary }}
-        </div>
+    <div class="reviews">
+        <h3>Reviews</h3>
+        <br />
+
+        <ul>
+            <li class="reviewList" data-ng-repeat="review in vm.book.reviews">
+                <div>
+                <strong>{{ review.reviewer }}</strong> &nbsp;
+                <uib-rating class="rating" readonly="vm.isReadonly" data-ng-model="review.rating"></uib-rating>
+                </div>
+                <div class="comments"> "{{ review.comments }}"</div>
+            </li>
+        </ul>
     </div>
-<div>
+
+</div>

@@ -23,8 +23,7 @@ app.use(bodyParser.json());
 
 
 // API routes
-var Book = require("./models/book");
-var bookRouter = require("./routes/bookRoutes")(Book);
+var bookRouter = require("./routes/book/book.route")();
 app.use("/api/books", bookRouter);
 
 switch (config.env) {

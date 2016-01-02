@@ -1,7 +1,10 @@
 (function () {
     "use strict";
 
-    var app = angular.module("booku", ["app.core", "book.module"]);
+    var app = angular.module("booku", [
+        "app.core",
+        "ui.bootstrap",                     
+        "book.module"]);
 
     //app.constant("toastr", toastr);
     app.config(configuration);
@@ -14,6 +17,5 @@
 
     function configureToastrMessages(argument) {
         toastr.timeOut = 4000;
-        toastr.options.positionClass = "toast-bottom-right";
     }
 })();

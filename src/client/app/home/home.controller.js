@@ -14,7 +14,7 @@
 
         vm.meanList = [
             { id: "mongo", name: "MongoDB", type: "Database", href: "http://www.mongodb.org" },
-            { id: "express", name: "ExpressJS", type: "Web Framework", href: "http://www.expressjs.org" },
+            { id: "express", name: "Express", type: "Web Framework", href: "http://www.expressjs.org" },
             { id: "angular", name: "Angular", type: "Client Framework", href: "http://www.angularjs.org" },
             { id: "node", name: "Node", type: "Backend Server", href: "http://www.nodejs.org" },
             { id: "gulp", name: "Gulp", type: "Build Automation", href: "http://www.gulpjs.org"},

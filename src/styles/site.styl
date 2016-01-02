@@ -9,9 +9,9 @@ redder = #c12919
 coolOrange = #fbe685
 gunmetal = #626257
 
-html, body, img, video 
-    width 100%
+html, body, img, video, .main
     max-width 100%
+    overflow-x hidden
 
 h1, h2, h3, h4, h5, h6, ul, body, header
     margin 0
@@ -27,7 +27,8 @@ a, a:link, a:visited, a:hover, a:active
     flex-flow column wrap
 
 header
-    height 120px
+    width 100%
+    height 125px
     color #ee
     background gunmetal
     font-family "Lato", sans-serif
@@ -41,6 +42,7 @@ header
 
         display flex
         margin-right 20px
+
     nav
         margin auto
         display flex
@@ -57,17 +59,28 @@ header
             li
                 margin 0 10px
 
+.main
+    min-height 800px
+    overflow auto
+
 .fa-book
-    font-size 5.5em
+    font-size 4.5em
 
 body
     font-family "Roboto", sans-serif
 
 footer
-    padding 3%
-    display flex
+    position fixed
+    bottom 0
+    left 0
+    padding 2%
     color #ee
+    width 100%
     background gunmetal
-    justify-content space-between
-    justify-tems justify
+    display flex
 
+    .disclaimer
+        flex-grow 2
+
+    .aboutMe, .contact 
+        flex-grow 1

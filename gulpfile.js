@@ -178,7 +178,8 @@ function startBrowserSync(isDev) {
 		proxy: "localhost:" + config.port,
 		port: 8000,
 		files: [
-			config.client + "**/*.*" 
+			config.client + "**/*.*",
+			"!" + config.stylus
 		],
 		ghostMode: {
 			clicks: true,
@@ -190,7 +191,7 @@ function startBrowserSync(isDev) {
 		logLevel: "debug",
 		logPrefix: "gulp-patterns",
 		notify: true,
-		reloadDelay: 1000 
+		reloadDelay: 1
 	};
 
 	browserSync(options);

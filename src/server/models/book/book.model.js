@@ -1,5 +1,7 @@
 var mongoose = require("mongoose");
 
+var review = require("../review/review.model").schema;
+
 var Schema = mongoose.Schema;
 
 var reMatch = new RegExp("/[a-zA-Z]/");
@@ -20,7 +22,8 @@ var bookSchema = new Schema({
 	publishedDate: Date,
 	price: { type: Number, min: 0 },
 	imageUrl: { type: String, default: "default.jepg" },
-	summary: String
+	summary: String,
+	reviews: [review]
 });
 
 module.exports = mongoose.model("Book", bookSchema);

@@ -12,6 +12,8 @@
 
 		var vm = this;
 
+		vm.isReadonly = true;
+
 		vm.cancel = function () {
 			$state.go("bookList");
 		};
