@@ -11,7 +11,7 @@ module.exports = {
     production: {
         port: process.env.PORT || 80,
         rootPath: rootPath,
-        db: "mongodb://bookuu:#hyegyo86kW@ds031581.mongolab.com:31581/bookuu"
+        db: "mongodb://bookuu:#hyegyo86kW@ds035965.mongolab.com:35965/bookuu"
     }
 
 };
