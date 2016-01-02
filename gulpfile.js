@@ -42,14 +42,14 @@ gulp.task("fonts", ["clean-fonts"], function () {
 
 // images
 gulp.task("images", ["clean-images"], function () {
-	log("*** Copying  and compression the images");	
+	log("*** Copying  and compression the images");
 	return gulp.src(config.images)
 		.pipe($.imagemin({ optimizationlevel: 4 }))
-		.pipe(gulp.dest(config.build + "images"));
+		.pipe(gulp.dest(config.dist + "images"));
 });
 
 gulp.task("clean", function (done) {
-	var delconfig = [].concat(config.dist, config.css);
+	var delconfig = [].concat(config.dist, config.css, config.temp);
 	log("Cleaning: " +  $.util.colors.blue(delconfig));
 	del(delconfig, done);
 });
@@ -82,15 +82,67 @@ gulp.task("wiredep", ["styles"], function () {
 		.pipe(gulp.dest(config.client));
 });
 
-gulp.task("inject", ["wiredep"], function () {
+gulp.task("inject", ["wiredep", "templatecache"], function () {
 	return gulp.src(config.index)
 		.pipe($.inject(gulp.src(config.css + "**/*.css")))
 		.pipe(gulp.dest(config.client));
 });
 
+gulp.task("templatecache", function () {
+
+    log("Creating Angular templatechache");
+	return gulp.src(config.htmlTemplates)
+		.pipe($.htmlmin({collapseWhitespace: true}))
+		.pipe($.angularTemplatecache(
+			config.templateCache.file,
+			config.templateCache.options
+		))
+		.pipe(gulp.dest(config.temp));
+
+});
+
+gulp.task("optimize", ["inject", "images"], function () {
+
+    log("Optimizing html, css and javascript files for production.");
+
+    var assets = $.useref.assets({ searchPath: config.root }),
+        templateCache = config.temp + config.templateCache.file,
+        cssFilter   = $.filter("**/*.css", { restore: true }),
+        jsLibFilter = $.filter("**/" + config.optimized.lib, { restore: true }),
+        jsAppFilter = $.filter("**/" + config.optimized.app, { restore: true });
+
+    return gulp.src(config.index)
+        .pipe($.plumber())
+        .pipe($.inject(
+			gulp.src(templateCache, { read: false }),
+			{ starttag: "<!-- inject:templates.js -->"})
+		)
+        .pipe(assets)
+        .pipe(cssFilter)
+        .pipe($.csso())
+        .pipe(cssFilter.restore)
+        .pipe(jsLibFilter)
+        .pipe($.uglify())
+        .pipe(jsLibFilter.restore)
+        .pipe(jsAppFilter)
+        .pipe($.ngAnnotate())
+        .pipe($.uglify())
+        .pipe(jsAppFilter.restore)
+        .pipe($.rev())
+        .pipe(assets.restore())
+        .pipe($.useref())
+        .pipe($.revReplace())
+        .pipe(gulp.dest(config.dist))
+        .pipe($.rev.manifest())
+        .pipe(gulp.dest(config.dist));
+
+});
+
+gulp.task("build", ["clean", "optimize", "test"]);
+
 // tests
-gulp.task("test", ["lint"], function () {
-	startTest(true, done);
+gulp.task("test", ["lint"], function (done) {
+	startTests(true, done);
 });
 
 // Serve to production and development environment
@@ -100,18 +152,18 @@ gulp.task("serve-dev", ["inject"], function () {
     serve(true);
 });
 
-gulp.task("serve-build", ["optimize"], function () {
+gulp.task("serve-build", ["build"], function () {
     serve(false);
 });
 
-function serve(isDev) { 
+function serve(isDev) {
 
 	return $.nodemon({
 		script: config.nodeServer,
 		delayTime: 1,
-		env: { 
+		env: {
 			"PORT": config.port,
-			"NODE_ENV" : isDev ? "dev" : "production" 
+			"NODE_ENV" : isDev ? "dev" : "production"
 		},
 		watch: [config.server]
 	})
@@ -140,7 +192,7 @@ function serve(isDev) {
 // --------------------------------------------------------
 
 function clean(path, done) {
-	del(path, done);	
+	del(path, done);
 }
 
 function log(msg) {
@@ -148,15 +200,15 @@ function log(msg) {
 		for (var item in msg) {
 			if (msg.hasOwnProperty(item)) {
 				$.util.log($.util.colors.blue(msg[item]));
-			}		
+			}
 		}
 	} else {
-		$.util.log($.util.colors.blue(msg));	
+		$.util.log($.util.colors.blue(msg));
 	}
 }
 
 function changeEvent(event) {
-	var srcPattern = new RegExp("/.*(?=/" + config.server + ")/");	
+	var srcPattern = new RegExp("/.*(?=/" + config.server + ")/");
 	log("File " + event.path.replace(srcPattern, "") + " " + event.type);
 }
 
@@ -164,7 +216,7 @@ function startBrowserSync(isDev) {
 	if (args.nosync || browserSync.active) {
 		return;
 	}
-	
+
 	log("Starting browser-sync on port " + config.port);
 
     if (isDev) {
@@ -198,7 +250,7 @@ function startBrowserSync(isDev) {
 }
 
 function startTests(singleRun, done) {
-	
+
 	var karma = require("karma").server;
 	var excludeFiles = [];
 	var serverSpecs = config.serverIntegrationSpecs;
@@ -206,15 +258,15 @@ function startTests(singleRun, done) {
 	excludeFiles = serverSpecs;
 
 	karma.start({
-		configFile: __dirname + "/karma.config/js",
-		exclude: execludeFiles,
+		configFile: __dirname + "/karma.conf.js",
+		exclude: excludeFiles,
 		singleRun: !!singleRun
 	}, karmaCompleted);
-	
+
 	function karmaCompleted(karmaResult) {
 		log("Karma completed!");
 		if (karmaResult === 1) {
-			done("karma: tess failed with code " + karmaResult);
+			done("karma: tests failed with code " + karmaResult);
 		} else {
 			done();
 		}

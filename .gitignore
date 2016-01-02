@@ -1,6 +1,7 @@
 *.[oa]
 *.swp
 *~
+tmp/
 node_modules/
 bower_components/
 src/client/lib/**/*

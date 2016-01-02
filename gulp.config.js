@@ -2,11 +2,11 @@ module.exports = function () {
 
     var env = process.env.NODE_ENV || "dev",
         port = process.env.PORT || 3000;
-	
+
 	var root = "./",
 	    src = root + "src/",
 	    temp = root + "tmp/",
-	    dist = root + "dist/",    
+	    dist = root + "dist/",
 		server = src + "server/",
 		client = src + "/client/",
 		clientApp = client + "app/",
@@ -29,8 +29,10 @@ module.exports = function () {
 		src: src,
 		css: css,
 		styles: styles,
-		server: server, 
+		server: server,
 		client: client,
+        temp: temp,
+        dist: dist,
 		ignore: ignore,
 		clientApp: clientApp,
 		index: client + "index.html",
@@ -48,6 +50,7 @@ module.exports = function () {
 		],
 		fonts: bowerComponents + "font-awesome/fonts/**/*.*",
 		images: images + "**/*.*",
+        htmlTemplates: clientApp + "**/*.html",
 		/* Stylus and Jade */
 		/*
 		 * Bower and NPM packages
@@ -62,6 +65,18 @@ module.exports = function () {
 		 * Karma and Tests
 		 */
 		serverIntegrationSpecs: [client + "tests/server-integration/**/*.spec.js"],
+		templateCache: {
+            file: "templates.js",
+            options: {
+                module: "app.core",
+                standAlone: false,
+                root: "app/"
+            }
+        },
+        optimized: {
+            lib: "lib.js",
+            app: "app.js"
+        }
 
 	};
 
@@ -71,6 +86,7 @@ module.exports = function () {
 			directory: config.bower.directory,
 			ignorePath: config.bower.ignorePath
 		};
+        return options;
 	};
 
 	return config;
