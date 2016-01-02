@@ -5,20 +5,28 @@
     </div>
 
     <div class="bookInfo">
-        <div class="author-heading"> {{ vm.book.author }} </div>
-        <div> {{ vm.book.publisher }} </div>
-        <div> {{ vm.book.publishedDate | date }} </div>
+        <div class="heading author-heading">
+            <h4>{{ vm.book.author }}</h4> 
+        </div>
         <br />
-        <h3>Summary</h3> {{ vm.book.summary }}
+        {{ vm.book.summary }}
+        <br />
+        <br />
+        <div class="publishingDetail"> {{ vm.book.publisher }}, {{ vm.book.publishedDate | date }} </div>
     </div>
     <div class="reviews">
-        <h3>Reviews</h3>
+        <div class="heading">
+            <h4>Reviews</h4>
+        </div>
         <br />
 
         <ul>
             <li class="reviewList" data-ng-repeat="review in vm.book.reviews">
                 <div>
-                <strong>{{ review.reviewer }}</strong> &nbsp;
+                <div>
+                    <strong>{{ review.reviewer }}</strong> &nbsp;
+                    {{ review.reviewDate | date }}
+                </div>
                 <uib-rating class="rating" readonly="vm.isReadonly" data-ng-model="review.rating"></uib-rating>
                 </div>
                 <div class="comments"> "{{ review.comments }}"</div>

@@ -51,7 +51,6 @@ module.exports = function () {
 		fonts: [
 		    bowerComponents + "font-awesome/fonts/**/*.*",
 		    bowerComponents + "bootstrap/fonts/**/*.*",
-		    
         ],
 		images: images + "**/*.*",
         htmlTemplates: clientApp + "**/*.html",

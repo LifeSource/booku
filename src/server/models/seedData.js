@@ -123,7 +123,64 @@ var seedData = {
             reviewDate: new Date("Sep 07, 2014"),
             comments: "Definitely worth the price, short book but has a lot of truth and profound ways to live out your life."
         }]
-    }]
+    },
+    {
+        title: "The Pragmatic Programmer",
+        author: "Andrew Hunt and Dave Thomas",
+        genre: "Programming",
+        publisher: "Addison Wesley",
+        publishedDate: new Date("Oct 10, 1999"),
+        price: 22.50,
+        imageUrl: "pragmaticprogrammer.jpg",
+        summary: "Programmers are craftspeople trained to use a certain set of tools (editors, object managers, version trackers) to generate a certain kind of product (programs) that will operate in some environment (operating systems on hardware assemblies). Like any other craft, computer programming has spawned a body of wisdom, most of which isn't taught at universities or in certification classes. Most programmers arrive at the so-called tricks of the trade over time, through independent experimentation. In The Pragmatic Programmer, Andrew Hunt and David Thomas codify many of the truths they've discovered during their respective careers as designers of software and writers of code.",
+        reviews: [{
+            reviewer: "David Crabbe",
+            rating: 4,
+            reviewDate: new Date("May 24, 2012"),
+            comments: "A well written book that is worth reading for anyone serious about their software cratmanship. The concepts and advice presented will prove useful in any career."
+
+        }, {
+            reviewer: "Matt Lorenski",
+            rating: 3,
+            reviewDate: new Date("Feb 1, 2011"),
+            comments: "I like the conciseness of the book and the materials presented but was a bit diasppointed with the brevity of it all."
+
+        }, {
+            reviewer: "Anonymous",
+            rating: 1,
+            reviewDate: new Date("Nov 09, 2014"),
+            comments: "There are better books out there. Waste of money!"
+        }]
+    },
+    {
+        title: "Don't Make Me Think Revisited",
+        author: "Steve Krug",
+        genre: "Design",
+        publisher: "New Riders",
+        publishedDate: new Date("Jan 10, 2014"),
+        price: 22.50,
+        imageUrl: "dontmakemethink.jpg",
+        summary: "Steve Krug (pronounced 'kroog') is best known as the author of Don't Make Me Think: A Common Sense Approach to Web Usability, now in its second edition with over 350,000 copies in print. Ten years later, he finally gathered enough energy to write another one: the usability testing handbook Rocket Surgery Made Easy: The Do-It-Yourself Guide to Finding and Fixing Usability Problems. The books were based on the 20+ years he's spent as a usability consultant for a wide variety of clients like Apple, Bloomberg.com, Lexus.com, NPR, the International Monetary Fund, and many others.",
+        reviews: [{
+            reviewer: "Melanie Hanson",
+            rating: 4,
+            reviewDate: new Date("May 24, 2015"),
+            comments: "Designers if you can buy any book, this one is a must have. It not only clarify and refined the original book but expand onto new terrortories in design."
+
+        }, {
+            reviewer: "Joe Loft",
+            rating: 5,
+            reviewDate: new Date("May 1, 2014"),
+            comments: "A masterpiece from Steve once again, he knows what he is talking about."
+
+        }, {
+            reviewer: "Anonymous",
+            rating: 2,
+            reviewDate: new Date("Nov 09, 2014"),
+            comments: "The original was a lot better, this new version didn't warrant the hype."
+        }]
+    }
+]
 };
 
 module.exports = seedData;

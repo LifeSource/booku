@@ -90,3 +90,29 @@ footer .aboutMe,
 footer .contact {
   flex-grow: 1;
 }
+@media screen and (max-width: 750px) {
+  footer {
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+  }
+  #bookDetail {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+  }
+  #bookDetail .bookImage img {
+    display: block;
+    margin: auto;
+  }
+  #bookDetail .bookImage,
+  #bookDetail .bookInfo,
+  #bookDetail .reviews {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 430px) {
+  header li {
+    display: none;
+  }
+}

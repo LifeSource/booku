@@ -1,17 +1,22 @@
 #bookDetail {
   display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 #bookDetail .bookImage,
 #bookDetail .bookInfo,
 #bookDetail .reviews {
   margin: 50px 0;
-  padding: 0 50px;
+  padding: 0 20px;
 }
 #bookDetail .bookImage {
-  width: 25%;
+  width: 15%;
 }
 #bookDetail .bookInfo {
-  width: 60%;
+  width: 45%;
+}
+#bookDetail .reviews {
+  width: 35%;
 }
 #bookDetail img {
   width: 225px;
@@ -24,12 +29,19 @@
 }
 #bookDetail .author-heading {
   padding: 15px;
-  background: #c3bd98;
+  background: #deff9f;
 }
 #bookDetail ul li {
   display: flex;
   flex-flow: column wrap;
   margin-bottom: 10px;
+}
+.publishingDetail {
+  text-align: right;
+}
+.reviews h4 {
+  padding: 15px;
+  background: #2ea2ff;
 }
 .rating {
   color: #eccb15;

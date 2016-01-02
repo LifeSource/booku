@@ -84,3 +84,27 @@ footer
 
     .aboutMe, .contact 
         flex-grow 1
+
+@media screen and (max-width: 750px)
+    footer
+        position relative
+        display flex
+        flex-flow column wrap
+
+    #bookDetail
+        display flex
+        flex-flow column wrap
+        justify-content center
+
+        .bookImage
+            img
+                display block
+                margin auto
+
+        .bookImage, .bookInfo, .reviews
+            width 100%
+@media screen and (max-width: 430px)
+    header
+        li
+            display none
+    
