@@ -1,8 +1,14 @@
 (function (app) {
 	
 	"use strict";
+
+    angular
+        .module("book.module")
+        .controller("BookAddController", ["bookService", "$state", BookAddController]);
 	
-	var BookAddController = function (bookService, $state) {
+    BookAddController.$inject = ["$state", "bookService"];
+
+	function BookAddController(bookService, $state) {
 		
 		var vm = this;
 
@@ -19,7 +25,6 @@
 		vm.open = function ($event) {
 			$event.preventDefault();
 			$event.stopPropagation();
-
 			vm.opened = !vm.opened;
 		};
 
@@ -40,8 +45,7 @@
 		vm.cancel = function () {
 			$state.go("bookList");
 		};
-	};
+	}
 
-	app.controller("BookAddController", ["bookService", "$state", BookAddController]);
 
 }(angular.module("booku")));

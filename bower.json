@@ -52,5 +52,8 @@
   },
   "homepage": "https://github.com/lifesource/booku",
   "main": "",
-  "moduleType": []
+  "moduleType": [],
+  "devDependencies": {
+    "bardjs": "~0.1.8"
+  }
 }

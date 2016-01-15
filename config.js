@@ -15,7 +15,9 @@ module.exports = function () {
         images = client + "images/",
 		nodeModules = root + "node_modules/",
 		bowerComponents = root + "bower_components/",
-		ignore = [nodeModules, bowerComponents];
+		ignore = [nodeModules, bowerComponents],
+        specRunnerFile = "specs.html";
+
 
 	var config = {
 		/*
@@ -64,6 +66,22 @@ module.exports = function () {
 			ignorePath: "../.."
 		},
 		bowserReloadDelay: 1000,
+		packages: [
+		    "./package.json",
+            "./bower.json"
+        ],
+		// Specs and Spec Runner
+		specRunner: client + specRunnerFile,
+		specRunnerFile: specRunnerFile,
+		testlibraries: [
+            nodeModules + "mocha/mocha.js",
+            nodeModules + "chai/chai.js",
+            nodeModules + "mocha-clean/index.js",
+            nodeModules + "sinon-chai/lib/sinon-chai.js"
+        ],
+        specs: [
+            clientApp + "**/*.spec.js"
+        ],
 		/*
 		 * Karma and Tests
 		 */

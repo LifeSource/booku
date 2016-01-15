@@ -2,10 +2,13 @@
 // Generated on Sat Jan 02 2016 13:02:16 GMT+0800 (AWST)
 
 module.exports = function(config) {
+
+    var gulpConfig = require("./config")();
+
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: gulpConfig.root,
 
 
     // frameworks to use
@@ -15,12 +18,17 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+        gulpConfig.client + "**/*.spec.js"
     ],
 
 
     // list of files to exclude
     exclude: [
     ],
+
+    proxies: {
+        '/': 'http://localhost:8888/'
+    },
 
 
     // preprocess matching files before serving them to the browser
@@ -42,7 +50,6 @@ module.exports = function(config) {
     // enable / disable colors in the output (reporters and logs)
     colors: true,
 
-
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
@@ -54,7 +61,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'PhantomJS'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode
