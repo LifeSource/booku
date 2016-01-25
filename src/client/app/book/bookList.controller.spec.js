@@ -1,19 +1,22 @@
 describe("BookList Controller", function() {
 
-    var controller;
+    var scope,
+        controller;
 
     beforeEach(function() {
         bard.appModule("book.module");
         bard.inject("$controller", "$log", "$q", "$rootScope", "bookService");
 
-        var ds = {
-            query: function() {
-                return $q.when();
-            }
-        };
-        controller = $controller("BookListController", { bookService: ds});
+        scope = $rootScope.$new();
+        controller = $controller("BookListController");
     });
 
 
+    it("should exist", function() {
+        expect(controller).to.exist;    
+    });
 
+    it("should have a vm property", function() {
+        expect(controller.vm).to.exist;
+    });
 });

@@ -41,11 +41,8 @@
             toastr.error("Unable to fetch the data: " + err);
         }
 
-
         function showBookDetail(bookId) {
-            $state.go("bookDetail", {
-                id: bookId
-            });
+            $state.go("bookDetail", { id: bookId });
         }
     }
 

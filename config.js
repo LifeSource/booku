@@ -31,6 +31,7 @@ module.exports = function () {
 		src: src,
 		css: css,
 		styles: styles,
+		stylus: styles + "**/*.styl",
 		server: server,
 		client: client,
         temp: temp,
@@ -38,7 +39,6 @@ module.exports = function () {
 		ignore: ignore,
 		clientApp: clientApp,
 		index: client + "index.html",
-		stylus: styles + "**/*.styl",
 		alljs: [
 			client + "**/*.js",
 			root + "*.js"

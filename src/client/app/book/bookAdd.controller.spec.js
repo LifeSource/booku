@@ -1,25 +1,19 @@
-(function() {
+describe("BookAddController", function() {
 
-    "use strict";
+    var controller;
 
-    describe("BookAddController", function() {
+    beforeEach(function() {
+        bard.appModule("book.module");
+        bard.inject("$controller", "$rootScope", "$q", "bookService");
 
-        var controller;
-
-        beforeEach(function() {
-            bard.appModule("book.module");
-            bard.inject("$controller", "$rootScope", "$q", "bookService");
-
-            controller = $controller("BookAddController");
-        });
-
-        it("controller should exist", function() {
-            expect(controller).to.exist;
-        });
-
-        it("controller should have a property called vm", function() {
-            controller.vm.should.exist;
-        });
+        controller = $controller("BookAddController");
     });
 
-}());
+    it("controller should exist", function() {
+        expect(controller).to.exist;
+    });
+
+    it("controller should have a property called vm", function() {
+        controller.vm.should.exist;
+    });
+});

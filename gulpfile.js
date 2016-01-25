@@ -11,16 +11,16 @@ gulp.task("default", ["help"]);
 gulp.task("help", $.taskListing);
 
 gulp.task("clean", function(done) {
-    var path = [].concat(config.build, config.css);
+    var path = [].concat(config.dist , config.css);
     clean(path, done);
 });
 
 gulp.task("clean-fonts", function(done) {
-    clean(config.build + "fonts/**/*.*", done);
+    clean(config.dist + "fonts/**/*.*", done);
 });
 
 gulp.task("clean-images", function(done) {
-    clean(config.build + "images/**/*.*", done);
+    clean(config.dist + "images/**/*.*", done);
 });
 
 gulp.task("clean-styles", function(done) {
@@ -31,8 +31,8 @@ gulp.task("clean-code", function(done) {
     var files = [].concat(
         config.css + "**/*.css",
         config.temp + "**/*.js",
-        config.build + "**/*.html",
-        config.build + "js/**/*.js"
+        config.dist + "**/*.html",
+        config.dist + "js/**/*.js"
     );
     clean(files, done);
 });
@@ -40,37 +40,31 @@ gulp.task("clean-code", function(done) {
 gulp.task("fonts", ["clean-fonts"], function() {
     log("*** Copying fonts");
     return gulp.src(config.fonts)
-        .pipe(gulp.dest(config.build + "fonts"));
+        .pipe(gulp.dest(config.dist + "fonts"));
 });
 
 gulp.task("images", ["clean-images"], function() {
     log("*** Copying and compressing the images");
     return gulp.src(config.images)
-        .pipe($.imagemin({
-            optimizationLevel: 4
-        }))
-        .pipe(gulp.dest(config.build + "images"));
+        .pipe($.imagemin({ optimizationLevel: 4 }))
+        .pipe(gulp.dest(config.dist + "images"));
 });
 
 gulp.task("styles", ["clean-styles"], function() {
     log("*** Compiling Stylus to CSS");
-    return gulp.src(config.styles)
+    return gulp.src(config.stylus)
         .pipe($.plumber())
         .pipe($.stylus())
-        .pipe($.autoprefixer({
-            browsers: ["Last 2 version", "> 5%"]
-        }))
+        .pipe($.autoprefixer({ browsers: ["Last 2 version", "> 5%"] }))
         .pipe(gulp.dest(config.css));
 });
 
 gulp.task("lint", function() {
     log("*** Linting all JS files");
-    return gulp.src(config.allJs)
+    return gulp.src(config.js)
         .pipe($.if(args.verbose, $.print()))
         .pipe($.jshint())
-        .pipe($.jshint.reporter("jshint-stylish", {
-            verbose: true
-        }))
+        .pipe($.jshint.reporter("jshint-stylish", { verbose: true }))
         .pipe($.jshint.reporter("fail"));
 });
 
@@ -109,26 +103,17 @@ gulp.task("inject", ["wiredep", "templatecache"], function() {
 
 
 gulp.task("optimize", ["inject", "fonts", "images"], function() {
+
     log("*** Optimizing the javascripts, css and html");
-    var assets = $.useref({
-        searchPath: config.root
-    });
+    var assets = $.useref({ searchPath: config.root });
     var templateCache = config.temp + config.templateCache.file;
-    var cssFilter = $.filter("**/*.css", {
-        restore: true
-    });
-    var jsLibFilter = $.filter("**/" + config.optimized.lib, {
-        restore: true
-    });
-    var jsAppFilter = $.filter("**/" + config.optimized.app, {
-        restore: true
-    });
+    var cssFilter = $.filter("**/*.css", { restore: true });
+    var jsLibFilter = $.filter("**/" + config.optimized.lib, { restore: true });
+    var jsAppFilter = $.filter("**/" + config.optimized.app, { restore: true });
 
     return gulp.src(config.index)
         .pipe($.plumber())
-        .pipe($.inject(templateCache, {
-            read: false
-        }, {
+        .pipe($.inject(templateCache, { read: false }, {
             starttag: "<!-- inject:templates.js -->"
         }))
         .pipe(assets)
@@ -146,24 +131,24 @@ gulp.task("optimize", ["inject", "fonts", "images"], function() {
         .pipe(assets)
         .pipe($.useref())
         .pipe($.revReplace())
-        .pipe(gulp.dest(config.build))
+        .pipe(gulp.dest(config.dist))
         .pipe($.rev.manifest())
-        .pipe(gulp.dest(config.build));
+        .pipe(gulp.dest(config.dist));
 });
 
 gulp.task("build", ["optimize", "images", "fonts"], function(done) {
     log("Building all assets and compiling all scripts");
-    dele(config.temp);
-    done();
+    del(config.temp).then(function() {
+        done();        
+    });
 });
 
 gulp.task("bump", function() {
     var msg = "Bumping versions";
     var type = args.type;
     var version = args.version;
-    var options = {
+    var options = { };
 
-    };
     if (version) {
         options.version = version;
         msg += " to " + version;
@@ -271,9 +256,7 @@ function serve(isDev, specRunner) {
 
             setTimeout(function() {
                 browserSync.notify("Reloading now...");
-                browserSync.reload({
-                    stream: false
-                });
+                browserSync.reload({ stream: false });
             }, config.browserReloadDelay);
         })
         .on("start", function() {
@@ -302,7 +285,7 @@ function startBrowserSync(isDev, specRunner) {
     }
 
     if (isDev) {
-        gulp.watch([config.styles], ["styles"])
+        gulp.watch([config.stylus], ["styles"])
             .on("change", function(event) {
                 changeEvent(event);
             });

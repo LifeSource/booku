@@ -1,7 +1,15 @@
 #bookDetail {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 #bookDetail .bookImage,
 #bookDetail .bookInfo,
@@ -32,8 +40,13 @@
   background: #deff9f;
 }
 #bookDetail ul li {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column wrap;
+  -webkit-flex-flow: column wrap;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
   margin-bottom: 10px;
 }
 .publishingDetail {
@@ -47,5 +60,8 @@
   color: #eccb15;
 }
 .reviewList {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
 }

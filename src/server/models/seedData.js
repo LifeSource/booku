@@ -179,6 +179,81 @@ var seedData = {
             reviewDate: new Date("Nov 09, 2014"),
             comments: "The original was a lot better, this new version didn't warrant the hype."
         }]
+    },
+    {
+        title: "Star Wars Trilogy",
+        author: "George Lucas, Donald F. Glut, James Kahn",
+        genre: "Science Fiction",
+        publisher: "Del Rey",
+        publishedDate: new Date("March 2, 1976"),
+        price: 8.50,
+        imageUrl: "starwars.jpg",
+        summary: "Luke Skywalker dreamed of adventures out among the stars and alien worlds. But when he intercepted a message from a beautiful captive princess, he got more than he had bargained for—and that was how the adventure of his life began.",
+        reviews: [
+
+            {
+                reviewer: "Jeff Wiley",
+                rating: 4,
+                reviewDate: new Date("November 4, 2005"),
+                comments: "I've been a Star Wars fan my entire life, and have read several of the Expanded Universe books. I'd never wanted to read the novelization of the original trilogy, however, until recently. On a lark, more than anything, I decided to pick it up."
+
+            },
+            {
+                reviewer: "A 10-year old reader",
+                rating: 5,
+                reviewDate: new Date("March 13, 2001"),
+                comments: "I love the Star Wars Trilogy and I think anyone else who reads it will love it too. The characters are described so well that I can visulise them and everything about them on my mind's eye. My favorite book out of the three is Return of the Jedi, but Star Wars, (A New Hope,) and The Empire Strikes Back make it very hard to choose. I also love the movies. If you like the book, it is a pretty good bet you'll like the movie too."
+            }
+        ]
+    },
+    {
+        title: "The Lord of the Rings: 50th Anniversary",
+        author: "J.R.R Tokien",
+        genre: "Fantasy",
+        publisher: "Harper Collins Publishers",
+        publishedDate: new Date("January 8, 2004"),
+        price: 35.50,
+        imageUrl: "lordoftherings.jpg",
+        summary: "One Ring to rule them all, One Ring to find them, One Ring to bring them all and in the darkness bind them In ancient times the Rings of Power were crafted by the Elven-smiths, and Sauron, the Dark Lord, forged the One Ring, filling it with his own power so that he could rule all others. But the One Ring was taken from him, and though he sought it throughout Middle-earth, it remained lost to him. After many ages it fell by chance into the hands of the hobbit Bilbo Baggins.",
+        reviews: [
+
+            {
+                reviewer: "Austin Larry",
+                rating: 5,
+                reviewDate: new Date("October 26, 2004"),
+                comments: "It is on very nice, very clean, very white paper with a large font. The books are substantial even bordering on heavy. They have beautiful red cloth covers with the J.R.R.T. symbol in gold. The dust jackets are beautiful with a different Alan Lee print on the cover, back, and spine."
+
+            },
+            {
+                reviewer: "mcewin",
+                rating: 2,
+                reviewDate: new Date("February 9, 2011"),
+                comments: "This is *not* a leather binding: it's a very ordinary hardcover edition with paper-thin faux leather glued over paper boards. The bookmark ribbon breaks the binding. Signatures glued rather than sewn together, not held together by the 'leather,' separated from paper spine. Poor production generally: end papers badly centered, more than a little random glue and rubber cement on the covers that really mars the appearance. Mine is the second printing, I do not see the poor type-setting complained of by other reviewers."}
+        ]
+    },
+    {
+        title: "The Art of War",
+        author: "Sun Tzu",
+        genre: "Military Strategies",
+        publisher: "",
+        publishedDate: new Date("October 1, 2015"),
+        price: 17.96,
+        imageUrl: "artofwar.jpg",
+        summary: "The Art of War enjoys enduring popularity among readers. It is a classic study of strategy and how to shape your tactics to cope with an ever-evolving situation in some cases how to fight without actually committing yourself to battle.",
+        reviews: [
+            {
+                reviewer: "Joel",
+                rating: 5,
+                reviewDate: new Date("October 26, 2015"),
+                comments: "A perfect book. Cant stop reading it when i get a chance, i always read it. The cover is nice material and the quality is high. Has pictures and a very great book."
+            },
+            {
+                reviewer: "James",
+                rating: 5,
+                reviewDate: new Date("December 13, 2015"),
+                comments: "I was pleasantly surprised, this book is beautiful. It came is a hard protective but also decorative box that the book can slide into and out. Great for displaying on a bookshelf or in a study. Font is largeish and crisp, easy to read."
+            }
+        ]
     }
 ]
 };

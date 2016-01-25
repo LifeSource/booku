@@ -1,8 +1,16 @@
 #bookList {
   margin: 50px 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 #bookList img {
   width: 123px;
@@ -11,8 +19,13 @@
 #bookList ul {
   width: 100%;
   list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
 }
 #bookList li {
   margin: auto;
@@ -20,6 +33,10 @@
 }
 #bookList li:hover {
   position: relative;
-  transform: translatey(50px) scalex(2) scaley(2);
+  -webkit-transform: translatey(50px) scalex(2) scaley(2);
+          transform: translatey(50px) scalex(2) scaley(2);
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
   transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
 }
