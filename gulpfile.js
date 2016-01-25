@@ -83,9 +83,7 @@ gulp.task("templatecache", function() {
 
     log("Creating Angular template cache.");
     return gulp.src(config.htmlTemplates)
-        .pipe($.htmlmin({
-            collapseWhitespace: true
-        }))
+        .pipe($.htmlmin({ collapseWhitespace: true }))
         .pipe($.angularTemplatecache(
             config.templateCache.file,
             config.templateCache.options
@@ -113,8 +111,9 @@ gulp.task("optimize", ["inject", "fonts", "images"], function() {
 
     return gulp.src(config.index)
         .pipe($.plumber())
-        .pipe($.inject(templateCache, { read: false }, {
-            starttag: "<!-- inject:templates.js -->"
+        .pipe($.inject(
+            gulp.src(templateCache, {read: false}), { 
+            starttag: "<!-- inject:templates.js -->" 
         }))
         .pipe(assets)
         .pipe(cssFilter)

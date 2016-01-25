@@ -18,11 +18,8 @@ module.exports = function () {
 		ignore = [nodeModules, bowerComponents],
         specRunnerFile = "specs.html";
 
-
 	var config = {
-		/*
-		 * Build information
-		 */
+		/* Build information */
 		port: process.env.PORT || 3000,
 		nodeServer: server + "server.js",
 		extensions: "js html css jade styl",
@@ -56,10 +53,7 @@ module.exports = function () {
         ],
 		images: images + "**/*.*",
         htmlTemplates: clientApp + "**/*.html",
-		/* Stylus and Jade */
-		/*
-		 * Bower and NPM packages
-		 */
+		/* Bower and NPM packages */
 		bower: {
 			json: "./bower.json",
 			directory: bowerComponents,
