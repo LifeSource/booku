@@ -54,6 +54,7 @@
   "main": "",
   "moduleType": [],
   "devDependencies": {
-    "bardjs": "~0.1.8"
+    "bardjs": "^0.1.8",
+    "bard": "^0.0.6"
   }
 }

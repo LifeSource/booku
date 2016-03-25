@@ -1,6 +1,13 @@
 describe("BookAddController", function() {
 
     var controller;
+    var books = [{
+        id: 1,
+        title: "C# in Depth",
+        author: "Jon Skeet",
+        publisher: "Manning Publishing",
+        publishedYear: new Date().getFullYear()
+    }];
 
     beforeEach(function() {
         bard.appModule("book.module");
@@ -13,7 +20,4 @@ describe("BookAddController", function() {
         expect(controller).to.exist;
     });
 
-    it("controller should have a property called vm", function() {
-        controller.vm.should.exist;
-    });
 });

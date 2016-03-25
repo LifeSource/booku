@@ -1,53 +1,56 @@
-describe.only("bookService", function() {
+describe("bookService", function() {
 
-    var service;
 
     beforeEach(function() {
         bard.appModule("book.module");
         bard.inject("$http", "$httpBackend", "$q", "$rootScope", "bookService");
-
-        service = bookService;
     });
 
-    afterEach(function() {
-
-    });
-    
     it("should exist", function() {
         expect(bookService).to.exist; 
     });
 
-    it("bookService should have a query() method", function() {
+    it("should have a query() method", function() {
         expect(bookService.query).to.exist;
     });
 
-    it("bookService.query() should hit the /api/books/", function() {
+    it("query() should return a list of books", function() {
+        
+    });
 
-        //$httpBackend.when("GET", "/api/books/").respond(200, []);
+    it("query() should hit the /api/books/", function() {
 
         $httpBackend.expectGET("/api/books/").respond(200);
-
-        service.query();
-
+        bookService.query();
         $httpBackend.verifyNoOutstandingExpectation();
-
         //$httpBackend.flush();
     });
 
-    it("bookService.query() reports error if server fails", function() {
+    it("query() reports error if server fails", function() {
 
         $httpBackend.whenGET("/api/books/").respond(500);
         var error;
 
-        service.query().catch(function (err) {
+        bookService.query().catch(function (err) {
             error = err;
-            console.log("error: ", err);
         });
 
         $httpBackend.flush();
 
-        //expect(error).to.exist;
         expect(error).to.be.undefined;
+        //expect(error).to.be.defined;
+    });
+
+    it("should have a get() method", function() {
+        expect(bookService.get).to.exist;    
+    });
+
+    it("should have a put() method", function() {
+        expect(bookService.put).to.exist;
+    });
+
+    it("should have a post() method", function() {
+        expect(bookService.post).to.exist;
     });
 });
 
