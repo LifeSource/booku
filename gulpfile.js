@@ -112,8 +112,8 @@ gulp.task("optimize", ["inject", "fonts", "images"], function() {
     return gulp.src(config.index)
         .pipe($.plumber())
         .pipe($.inject(
-            gulp.src(templateCache, {read: false}), { 
-            starttag: "<!-- inject:templates.js -->" 
+            gulp.src(templateCache, {read: false}), {
+            starttag: "<!-- inject:templates.js -->"
         }))
         .pipe(assets)
         .pipe(cssFilter)
@@ -138,7 +138,7 @@ gulp.task("optimize", ["inject", "fonts", "images"], function() {
 gulp.task("build", ["optimize", "images", "fonts"], function(done) {
     log("Building all assets and compiling all scripts");
     del(config.temp).then(function() {
-        done();        
+        done();
     });
 });
 
